@@ -1,0 +1,60 @@
+
+#------------------Common_configuration(Start)------------------
+#naming the service under lambda on AWS console(application name):
+service: IoT-SES-restapi
+
+#about provider name & runtime envrinment:
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs14.x
+
+#------------------Common_configuration(End)---------------------
+
+
+#identifying the functions existed on restApi:
+functions:
+  #---------------------------------users-microservice---------------------------------
+  craeteAuth:
+      handler: createAuth.handler
+      description: lambda to create a new Authentication!
+      events:
+      - httpApi: 
+          path: /api/v0/auth/create
+          method: POST
+
+
+  readAuth:
+    handler: readAuth.handler
+    description: lambda to get Authentication from database!
+    events:
+      - httpApi: 
+          path: /api/v0/auth/read
+          method: GET
+
+  updateAuth:
+    handler: updateAuth.handler
+    description: lambda to update Authentication in database!
+    events:
+      - httpApi: 
+          path: /api/v0/auth/update
+          method: PUT
+
+  deleteAuth:
+    handler: readAuth.handler
+    description: lambda to delete Authentication from database!
+    events:
+      - httpApi: 
+          path: /api/v0/auth/delete
+          method: DELETE
+  
+  #---------------------------------restApi-safety---------------------------------
+
+  #An endpoint to ensure that the restApi is working fine:
+  heartBeats:
+      handler: index.handler
+      description: lambda to ensure that everything is ok!
+      events:
+      - httpApi: 
+          path: /api/v0/auth
+          method: GET

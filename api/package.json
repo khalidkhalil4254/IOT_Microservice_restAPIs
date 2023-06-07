@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "mysql": "^2.18.1"
+  },
+  "name": "new-folder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "start read": "nodemon read.js",
+    "start updatee": "nodemon updatee.js",
+    "start delete": "nodemon delete.js",
+    "deployAll": "cd functions/auth & sls deploy & cd ../users & sls deploy & cd ../logs & sls deploy & cd ../sessions & sls deploy",
+    "removeAll": "cd functions/auth & sls remove --stage dev --region us-east-1",
+    "infoAll": "cd functions/auth & sls info & cd ../users & sls info & cd ../logs & sls info & cd ../sessions & sls info"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
