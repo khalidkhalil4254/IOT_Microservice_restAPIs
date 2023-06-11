@@ -1,7 +1,7 @@
 # IOT_Microservice_restAPIs
 
 - (under development project):
-- this project involves using of microservice based architecture in IOT based Exhibition management system 
+- this project involves using of serverless microservices based architecture in IOT based Exhibition management system 
 making it easier , safer and efficient with high performance in managing and keep monitoring the exhbition
 system.
 
