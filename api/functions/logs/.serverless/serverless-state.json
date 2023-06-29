@@ -1,8 +1,8 @@
 {
   "service": {
-    "service": "IoT-SES-restapi",
+    "service": "IoT-SES-LogsRestApi",
     "serviceObject": {
-      "name": "IoT-SES-restapi"
+      "name": "IoT-SES-LogsRestApi"
     },
     "provider": {
       "name": "aws",
@@ -86,19 +86,19 @@
           "CraeteLogsLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-craeteLogs"
+              "LogGroupName": "/aws/lambda/IoT-SES-LogsRestApi-dev-craeteLogs"
             }
           },
           "ReadLogsLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-readLogs"
+              "LogGroupName": "/aws/lambda/IoT-SES-LogsRestApi-dev-readLogs"
             }
           },
           "HeartBeatsLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-heartBeats"
+              "LogGroupName": "/aws/lambda/IoT-SES-LogsRestApi-dev-heartBeats"
             }
           },
           "IamRoleLambdaExecution": {
@@ -126,7 +126,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "IoT-SES-restapi",
+                        "IoT-SES-LogsRestApi",
                         "dev",
                         "lambda"
                       ]
@@ -144,7 +144,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-restapi-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-LogsRestApi-dev*:*"
                           }
                         ]
                       },
@@ -155,7 +155,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-restapi-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-LogsRestApi-dev*:*:*"
                           }
                         ]
                       }
@@ -168,7 +168,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "IoT-SES-restapi",
+                    "IoT-SES-LogsRestApi",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -186,11 +186,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-restapi/dev/1685913041107-2023-06-04T21:10:41.107Z/IoT-SES-restapi.zip"
+                "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1687806560599-2023-06-26T19:09:20.599Z/IoT-SES-LogsRestApi.zip"
               },
               "Handler": "createLog.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-restapi-dev-craeteLogs",
+              "FunctionName": "IoT-SES-LogsRestApi-dev-craeteLogs",
               "MemorySize": 1024,
               "Timeout": 6,
               "Description": "lambda to create a new log information with timestamp for each record!",
@@ -212,11 +212,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-restapi/dev/1685913041107-2023-06-04T21:10:41.107Z/IoT-SES-restapi.zip"
+                "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1687806560599-2023-06-26T19:09:20.599Z/IoT-SES-LogsRestApi.zip"
               },
               "Handler": "readLog.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-restapi-dev-readLogs",
+              "FunctionName": "IoT-SES-LogsRestApi-dev-readLogs",
               "MemorySize": 1024,
               "Timeout": 6,
               "Description": "lambda to read a log information with its timestamp!",
@@ -238,11 +238,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-restapi/dev/1685913041107-2023-06-04T21:10:41.107Z/IoT-SES-restapi.zip"
+                "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1687806560599-2023-06-26T19:09:20.599Z/IoT-SES-LogsRestApi.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-restapi-dev-heartBeats",
+              "FunctionName": "IoT-SES-LogsRestApi-dev-heartBeats",
               "MemorySize": 1024,
               "Timeout": 6,
               "Description": "lambda to ensure that everything is ok!",
@@ -257,7 +257,7 @@
               "HeartBeatsLogGroup"
             ]
           },
-          "CraeteLogsLambdaVersionkDhioShb7Cp0ZJNcEygpnCHAPROiUWVaYpry0Qm3C4": {
+          "CraeteLogsLambdaVersionw5VzhXiyNBalH8JzxHJivTqBpCMCy4QW0cUr8G18K0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
@@ -268,7 +268,7 @@
               "Description": "lambda to create a new log information with timestamp for each record!"
             }
           },
-          "ReadLogsLambdaVersionVoinycqbNYATTLkaVH8CjUTq5BLouENpgX3nrwaINU": {
+          "ReadLogsLambdaVersionf06BLLdNgoAZUyjaf20KUNmiG71t6IAAcjk7d6VJpcI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
@@ -279,7 +279,7 @@
               "Description": "lambda to read a log information with its timestamp!"
             }
           },
-          "HeartBeatsLambdaVersionApxMGKWko4x9juMAMrQaWy182jjuwP0qF8k7xiVc": {
+          "HeartBeatsLambdaVersion06CcNOyZWaTgojAbpewscdrX6mURWRB6oiqNXdlqlY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
@@ -293,7 +293,7 @@
           "HttpApi": {
             "Type": "AWS::ApiGatewayV2::Api",
             "Properties": {
-              "Name": "dev-IoT-SES-restapi",
+              "Name": "dev-IoT-SES-LogsRestApi",
               "ProtocolType": "HTTP"
             }
           },
@@ -533,34 +533,34 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-IoT-SES-LogsRestApi-dev-ServerlessDeploymentBucketName"
             }
           },
           "CraeteLogsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CraeteLogsLambdaVersionkDhioShb7Cp0ZJNcEygpnCHAPROiUWVaYpry0Qm3C4"
+              "Ref": "CraeteLogsLambdaVersionw5VzhXiyNBalH8JzxHJivTqBpCMCy4QW0cUr8G18K0"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-CraeteLogsLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-LogsRestApi-dev-CraeteLogsLambdaFunctionQualifiedArn"
             }
           },
           "ReadLogsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ReadLogsLambdaVersionVoinycqbNYATTLkaVH8CjUTq5BLouENpgX3nrwaINU"
+              "Ref": "ReadLogsLambdaVersionf06BLLdNgoAZUyjaf20KUNmiG71t6IAAcjk7d6VJpcI"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-ReadLogsLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-LogsRestApi-dev-ReadLogsLambdaFunctionQualifiedArn"
             }
           },
           "HeartBeatsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HeartBeatsLambdaVersionApxMGKWko4x9juMAMrQaWy182jjuwP0qF8k7xiVc"
+              "Ref": "HeartBeatsLambdaVersion06CcNOyZWaTgojAbpewscdrX6mURWRB6oiqNXdlqlY"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-HeartBeatsLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-LogsRestApi-dev-HeartBeatsLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -569,7 +569,7 @@
               "Ref": "HttpApi"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-HttpApiId"
+              "Name": "sls-IoT-SES-LogsRestApi-dev-HttpApiId"
             }
           },
           "HttpApiUrl": {
@@ -594,7 +594,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-HttpApiUrl"
+              "Name": "sls-IoT-SES-LogsRestApi-dev-HttpApiUrl"
             }
           }
         }
@@ -698,13 +698,13 @@
             "resolvedPath": "/api/v0/logs/create"
           }
         ],
-        "name": "IoT-SES-restapi-dev-craeteLogs",
+        "name": "IoT-SES-LogsRestApi-dev-craeteLogs",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CraeteLogsLambdaVersionkDhioShb7Cp0ZJNcEygpnCHAPROiUWVaYpry0Qm3C4"
+        "versionLogicalId": "CraeteLogsLambdaVersionw5VzhXiyNBalH8JzxHJivTqBpCMCy4QW0cUr8G18K0"
       },
       "readLogs": {
         "handler": "readLog.handler",
@@ -719,13 +719,13 @@
             "resolvedPath": "/api/v0/logs/read"
           }
         ],
-        "name": "IoT-SES-restapi-dev-readLogs",
+        "name": "IoT-SES-LogsRestApi-dev-readLogs",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ReadLogsLambdaVersionVoinycqbNYATTLkaVH8CjUTq5BLouENpgX3nrwaINU"
+        "versionLogicalId": "ReadLogsLambdaVersionf06BLLdNgoAZUyjaf20KUNmiG71t6IAAcjk7d6VJpcI"
       },
       "heartBeats": {
         "handler": "index.handler",
@@ -740,19 +740,19 @@
             "resolvedPath": "/api/v0/logs"
           }
         ],
-        "name": "IoT-SES-restapi-dev-heartBeats",
+        "name": "IoT-SES-LogsRestApi-dev-heartBeats",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HeartBeatsLambdaVersionApxMGKWko4x9juMAMrQaWy182jjuwP0qF8k7xiVc"
+        "versionLogicalId": "HeartBeatsLambdaVersion06CcNOyZWaTgojAbpewscdrX6mURWRB6oiqNXdlqlY"
       }
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
-      "service": "IoT-SES-restapi",
+      "service": "IoT-SES-LogsRestApi",
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
       },
@@ -762,10 +762,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\logs\\.serverless\\IoT-SES-restapi.zip"
+    "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\logs\\.serverless\\IoT-SES-LogsRestApi.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/IoT-SES-restapi/dev/1685913041107-2023-06-04T21:10:41.107Z",
-    "artifact": "IoT-SES-restapi.zip"
+    "artifactDirectoryName": "serverless/IoT-SES-LogsRestApi/dev/1687806560599-2023-06-26T19:09:20.599Z",
+    "artifact": "IoT-SES-LogsRestApi.zip"
   }
 }

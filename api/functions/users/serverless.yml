@@ -1,7 +1,7 @@
 
 #------------------Common_configuration(Start)------------------
 #naming the service under lambda on AWS console(application name):
-service: IoT-SES-restapi
+service: IoT-SES-UsersRestApi
 
 #about provider name & runtime envrinment:
 provider:
@@ -28,9 +28,25 @@ functions:
     handler: readUser.handler
     description: lambda to get all usera from database!
     events:
-      - httpApi: 
-          path: /api/v0/users/read
-          method: GET
+    - httpApi: 
+        path: /api/v0/users/read
+        method: GET
+
+  updateUsers:
+    handler: updateUser.handler
+    description: lambda function to update an existing user in database.
+    events:
+    - httpApi:
+        path: /api/v0/users/update
+        method: PUT
+
+  deleteUsers:
+    handler: deleteUser.handler
+    description: lambda function to delete an existing user from the database.
+    events:
+    - httpApi:
+        path: /api/v0/users/delete
+        method: DELETE
 
 
   

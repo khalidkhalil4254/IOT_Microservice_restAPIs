@@ -1,0 +1,38 @@
+service: IoT-SES-SessionsRestApi
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+
+functions:
+  createSession:
+    handler: createSession.handler
+    description: lambda function to create a new session in database.
+    events:
+    - httpApi:
+        path: /api/v0/sessions/create
+        method: POST
+
+  readSession:
+    handler: readSession.handler
+    description: lambda function to read sessions.
+    events:
+    - httpApi:
+        path: /api/v0/sessions/read
+        method: GET
+
+  updateSession:
+    handler: updateSession.handler
+    description: lambda fucntion to update existing session details.
+    events:
+    - httpApi:
+        path: /api/v0/sessions/update 
+        method: PUT
+
+  deleteSession:
+    handler: deleteSession.handler
+    description: lambda function to delete an existing session.
+    events:
+    - httpApi:
+        path: /api/v0/sessions/delete
+        method: DELETE
