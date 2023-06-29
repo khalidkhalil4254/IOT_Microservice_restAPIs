@@ -198,7 +198,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688080141945-2023-06-29T23:09:01.945Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "createSession.handler",
               "Runtime": "nodejs14.x",
@@ -224,7 +224,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688080141945-2023-06-29T23:09:01.945Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "readSession.handler",
               "Runtime": "nodejs14.x",
@@ -250,7 +250,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688080141945-2023-06-29T23:09:01.945Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "updateSession.handler",
               "Runtime": "nodejs14.x",
@@ -276,7 +276,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688080141945-2023-06-29T23:09:01.945Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "deleteSession.handler",
               "Runtime": "nodejs14.x",
@@ -302,7 +302,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688080141945-2023-06-29T23:09:01.945Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs14.x",
@@ -321,58 +321,58 @@
               "HeartBeatSessionLogGroup"
             ]
           },
-          "CreateSessionLambdaVersionjgz0V1pLVsvXGHFHZAdtWHzKhCVGNLKFoz4OrbUQnvM": {
+          "CreateSessionLambdaVersion1rwz4XOtuV4wDmJ5YZ8i3KMVMs618ER3Rs1UqXA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateSessionLambdaFunction"
               },
-              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "CodeSha256": "CpDoOTFlOXkTulriCpX5yQPPWOkgbW+K+I8SSXjwFk8=",
               "Description": "lambda function to create a new session in database."
             }
           },
-          "ReadSessionLambdaVersionijn6u76nkq5RByBUUhPYfC05oSaZQLbf1H4pee1TC4": {
+          "ReadSessionLambdaVersionOnRl5VraHZEx4HDaSiUHjdZ8aQlLBcaitGdBinI2w": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ReadSessionLambdaFunction"
               },
-              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "CodeSha256": "CpDoOTFlOXkTulriCpX5yQPPWOkgbW+K+I8SSXjwFk8=",
               "Description": "lambda function to read sessions."
             }
           },
-          "UpdateSessionLambdaVersioncoefgPxdmo1ACmhk33Ja2cTiBGBM0wTAlcG1k0KZWM": {
+          "UpdateSessionLambdaVersionoUVRJqtDYtHmqWfYSTBJMSGB6PBhXcCU6RMOZlJNF4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateSessionLambdaFunction"
               },
-              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "CodeSha256": "CpDoOTFlOXkTulriCpX5yQPPWOkgbW+K+I8SSXjwFk8=",
               "Description": "lambda fucntion to update existing session details."
             }
           },
-          "DeleteSessionLambdaVersionScnNCE9j2QgWNfexqb7XLO93UVM9zFy6FT85Fqnk": {
+          "DeleteSessionLambdaVersionZg4VfImDX2XGdKi8P3BpZmwlmNlLvgqtho7dYJcDOcA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteSessionLambdaFunction"
               },
-              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "CodeSha256": "CpDoOTFlOXkTulriCpX5yQPPWOkgbW+K+I8SSXjwFk8=",
               "Description": "lambda function to delete an existing session."
             }
           },
-          "HeartBeatSessionLambdaVersioniTi1xs0L6QctNMzfCKUZAieFH7CyRRvMkDaRjt6xQ": {
+          "HeartBeatSessionLambdaVersionASsRNhioicpAVZ0dAmlco0eetk4JhZxfnawhQcKLg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HeartBeatSessionLambdaFunction"
               },
-              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "CodeSha256": "CpDoOTFlOXkTulriCpX5yQPPWOkgbW+K+I8SSXjwFk8=",
               "Description": "lambda function for determining that the service is working perfectly."
             }
           },
@@ -769,7 +769,7 @@
           "CreateSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateSessionLambdaVersionjgz0V1pLVsvXGHFHZAdtWHzKhCVGNLKFoz4OrbUQnvM"
+              "Ref": "CreateSessionLambdaVersion1rwz4XOtuV4wDmJ5YZ8i3KMVMs618ER3Rs1UqXA"
             },
             "Export": {
               "Name": "sls-IoT-SES-SessionsRestApi-dev-CreateSessionLambdaFunctionQualifiedArn"
@@ -778,7 +778,7 @@
           "ReadSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ReadSessionLambdaVersionijn6u76nkq5RByBUUhPYfC05oSaZQLbf1H4pee1TC4"
+              "Ref": "ReadSessionLambdaVersionOnRl5VraHZEx4HDaSiUHjdZ8aQlLBcaitGdBinI2w"
             },
             "Export": {
               "Name": "sls-IoT-SES-SessionsRestApi-dev-ReadSessionLambdaFunctionQualifiedArn"
@@ -787,7 +787,7 @@
           "UpdateSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateSessionLambdaVersioncoefgPxdmo1ACmhk33Ja2cTiBGBM0wTAlcG1k0KZWM"
+              "Ref": "UpdateSessionLambdaVersionoUVRJqtDYtHmqWfYSTBJMSGB6PBhXcCU6RMOZlJNF4"
             },
             "Export": {
               "Name": "sls-IoT-SES-SessionsRestApi-dev-UpdateSessionLambdaFunctionQualifiedArn"
@@ -796,7 +796,7 @@
           "DeleteSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteSessionLambdaVersionScnNCE9j2QgWNfexqb7XLO93UVM9zFy6FT85Fqnk"
+              "Ref": "DeleteSessionLambdaVersionZg4VfImDX2XGdKi8P3BpZmwlmNlLvgqtho7dYJcDOcA"
             },
             "Export": {
               "Name": "sls-IoT-SES-SessionsRestApi-dev-DeleteSessionLambdaFunctionQualifiedArn"
@@ -805,7 +805,7 @@
           "HeartBeatSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HeartBeatSessionLambdaVersioniTi1xs0L6QctNMzfCKUZAieFH7CyRRvMkDaRjt6xQ"
+              "Ref": "HeartBeatSessionLambdaVersionASsRNhioicpAVZ0dAmlco0eetk4JhZxfnawhQcKLg"
             },
             "Export": {
               "Name": "sls-IoT-SES-SessionsRestApi-dev-HeartBeatSessionLambdaFunctionQualifiedArn"
@@ -952,7 +952,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CreateSessionLambdaVersionjgz0V1pLVsvXGHFHZAdtWHzKhCVGNLKFoz4OrbUQnvM"
+        "versionLogicalId": "CreateSessionLambdaVersion1rwz4XOtuV4wDmJ5YZ8i3KMVMs618ER3Rs1UqXA"
       },
       "readSession": {
         "handler": "readSession.handler",
@@ -973,7 +973,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ReadSessionLambdaVersionijn6u76nkq5RByBUUhPYfC05oSaZQLbf1H4pee1TC4"
+        "versionLogicalId": "ReadSessionLambdaVersionOnRl5VraHZEx4HDaSiUHjdZ8aQlLBcaitGdBinI2w"
       },
       "updateSession": {
         "handler": "updateSession.handler",
@@ -994,7 +994,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "UpdateSessionLambdaVersioncoefgPxdmo1ACmhk33Ja2cTiBGBM0wTAlcG1k0KZWM"
+        "versionLogicalId": "UpdateSessionLambdaVersionoUVRJqtDYtHmqWfYSTBJMSGB6PBhXcCU6RMOZlJNF4"
       },
       "deleteSession": {
         "handler": "deleteSession.handler",
@@ -1015,7 +1015,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "DeleteSessionLambdaVersionScnNCE9j2QgWNfexqb7XLO93UVM9zFy6FT85Fqnk"
+        "versionLogicalId": "DeleteSessionLambdaVersionZg4VfImDX2XGdKi8P3BpZmwlmNlLvgqtho7dYJcDOcA"
       },
       "heartBeatSession": {
         "handler": "index.handler",
@@ -1036,7 +1036,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HeartBeatSessionLambdaVersioniTi1xs0L6QctNMzfCKUZAieFH7CyRRvMkDaRjt6xQ"
+        "versionLogicalId": "HeartBeatSessionLambdaVersionASsRNhioicpAVZ0dAmlco0eetk4JhZxfnawhQcKLg"
       }
     },
     "configValidationMode": "warn",
@@ -1055,7 +1055,7 @@
     "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\sessions\\.serverless\\IoT-SES-SessionsRestApi.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z",
+    "artifactDirectoryName": "serverless/IoT-SES-SessionsRestApi/dev/1688080141945-2023-06-29T23:09:01.945Z",
     "artifact": "IoT-SES-SessionsRestApi.zip"
   }
 }

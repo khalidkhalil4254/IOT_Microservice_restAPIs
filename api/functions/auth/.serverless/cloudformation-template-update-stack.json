@@ -186,7 +186,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688080098394-2023-06-29T23:08:18.394Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "createAuth.handler",
         "Runtime": "nodejs14.x",
@@ -212,7 +212,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688080098394-2023-06-29T23:08:18.394Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "readAuth.handler",
         "Runtime": "nodejs14.x",
@@ -238,7 +238,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688080098394-2023-06-29T23:08:18.394Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "updateAuth.handler",
         "Runtime": "nodejs14.x",
@@ -264,7 +264,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688080098394-2023-06-29T23:08:18.394Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "readAuth.handler",
         "Runtime": "nodejs14.x",
@@ -290,7 +290,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688080098394-2023-06-29T23:08:18.394Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",

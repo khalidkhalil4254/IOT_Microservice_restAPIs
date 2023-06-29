@@ -41,7 +41,12 @@ module.exports.handler=async(event, context, callback)=>{
 
       if(results.length>0){
         console.log(`Result: ${results}`);
-        return res._200;
+        return {
+          statusCode:200,
+          body: JSON.stringify({
+            message: results
+          })
+        };
       }
 
       else{
