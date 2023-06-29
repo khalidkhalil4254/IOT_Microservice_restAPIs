@@ -30,6 +30,9 @@ exports.handler = async (event) => {
 // Close the connection pool
 pool.end();
 
+
+  console.log(`Res: ${results}`);
+
   if(results.length!=0){
           // Format the results as JSON
           const json_results = JSON.stringify(results);

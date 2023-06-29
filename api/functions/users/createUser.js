@@ -23,7 +23,7 @@ module.exports.handler=async(event,callback,context)=>{
         database: config.conf.db_name
       });
 
-    const query = `INSERT INTO users(RFID ,username ,user_password ,user_type ,user_role_id ) VALUES ('${rfid}', '${username}', '${password}', '${role}', ${role_id});`;
+    const query = `INSERT INTO User(RFID ,username ,user_password ,user_type ,user_role_id ) VALUES ('${rfid}', '${username}', '${password}', '${role}', ${role_id});`;
     const newUser = {
         rfid ,
         username ,

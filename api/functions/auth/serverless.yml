@@ -1,7 +1,7 @@
 
 #------------------Common_configuration(Start)------------------
 #naming the service under lambda on AWS console(application name):
-service: IoT-SES-restapi
+service: IoT-SES-AuthRestApi
 
 #about provider name & runtime envrinment:
 provider:

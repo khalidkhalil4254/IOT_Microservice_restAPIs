@@ -1,7 +1,7 @@
 
 #------------------Common_configuration(Start)------------------
 #naming the service under lambda on AWS console:
-service: IoT-SES-restapi
+service: IoT-SES-LogsRestApi
 
 #about provider name & runtime envrinment:
 provider:

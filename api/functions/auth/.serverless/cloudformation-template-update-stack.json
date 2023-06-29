@@ -74,31 +74,31 @@
     "CraeteAuthLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-craeteAuth"
+        "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-craeteAuth"
       }
     },
     "ReadAuthLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-readAuth"
+        "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-readAuth"
       }
     },
     "UpdateAuthLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-updateAuth"
+        "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-updateAuth"
       }
     },
     "DeleteAuthLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-deleteAuth"
+        "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-deleteAuth"
       }
     },
     "HeartBeatsLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-heartBeats"
+        "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-heartBeats"
       }
     },
     "IamRoleLambdaExecution": {
@@ -126,7 +126,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "IoT-SES-restapi",
+                  "IoT-SES-AuthRestApi",
                   "dev",
                   "lambda"
                 ]
@@ -144,7 +144,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-restapi-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-AuthRestApi-dev*:*"
                     }
                   ]
                 },
@@ -155,7 +155,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-restapi-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-AuthRestApi-dev*:*:*"
                     }
                   ]
                 }
@@ -168,7 +168,7 @@
           "Fn::Join": [
             "-",
             [
-              "IoT-SES-restapi",
+              "IoT-SES-AuthRestApi",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -186,11 +186,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-restapi/dev/1685912834816-2023-06-04T21:07:14.816Z/IoT-SES-restapi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1687806484276-2023-06-26T19:08:04.276Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "createAuth.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-restapi-dev-craeteAuth",
+        "FunctionName": "IoT-SES-AuthRestApi-dev-craeteAuth",
         "MemorySize": 1024,
         "Timeout": 6,
         "Description": "lambda to create a new Authentication!",
@@ -212,11 +212,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-restapi/dev/1685912834816-2023-06-04T21:07:14.816Z/IoT-SES-restapi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1687806484276-2023-06-26T19:08:04.276Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "readAuth.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-restapi-dev-readAuth",
+        "FunctionName": "IoT-SES-AuthRestApi-dev-readAuth",
         "MemorySize": 1024,
         "Timeout": 6,
         "Description": "lambda to get Authentication from database!",
@@ -238,11 +238,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-restapi/dev/1685912834816-2023-06-04T21:07:14.816Z/IoT-SES-restapi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1687806484276-2023-06-26T19:08:04.276Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "updateAuth.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-restapi-dev-updateAuth",
+        "FunctionName": "IoT-SES-AuthRestApi-dev-updateAuth",
         "MemorySize": 1024,
         "Timeout": 6,
         "Description": "lambda to update Authentication in database!",
@@ -264,11 +264,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-restapi/dev/1685912834816-2023-06-04T21:07:14.816Z/IoT-SES-restapi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1687806484276-2023-06-26T19:08:04.276Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "readAuth.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-restapi-dev-deleteAuth",
+        "FunctionName": "IoT-SES-AuthRestApi-dev-deleteAuth",
         "MemorySize": 1024,
         "Timeout": 6,
         "Description": "lambda to delete Authentication from database!",
@@ -290,11 +290,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-restapi/dev/1685912834816-2023-06-04T21:07:14.816Z/IoT-SES-restapi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1687806484276-2023-06-26T19:08:04.276Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-restapi-dev-heartBeats",
+        "FunctionName": "IoT-SES-AuthRestApi-dev-heartBeats",
         "MemorySize": 1024,
         "Timeout": 6,
         "Description": "lambda to ensure that everything is ok!",
@@ -309,7 +309,7 @@
         "HeartBeatsLogGroup"
       ]
     },
-    "CraeteAuthLambdaVersionauJhL88JP2s1ED1Wkix5mAhc5oOmr42il94p6lpizI": {
+    "CraeteAuthLambdaVersionhRgObgMeKpkncxwOiyIGPCXubUKdwuJ6H5VhfXISlI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
@@ -320,7 +320,7 @@
         "Description": "lambda to create a new Authentication!"
       }
     },
-    "ReadAuthLambdaVersionI0xBsnzYHcXauIB4Wi5GN0faSvjb1qhkAgGwMXfun7w": {
+    "ReadAuthLambdaVersionLFACT4KA1TeyWrrrN9rv09109GG9errwx5jfkJ1io": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
@@ -331,7 +331,7 @@
         "Description": "lambda to get Authentication from database!"
       }
     },
-    "UpdateAuthLambdaVersionP1gQA6bBOVV0xRT4bcumO1gPBU5nNl1IQ5ZEfOCQc4": {
+    "UpdateAuthLambdaVersionMt07I9sJeS6r5ceMWsYWEBR3B6C6zNTNy9Pdcph1Azw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
@@ -342,7 +342,7 @@
         "Description": "lambda to update Authentication in database!"
       }
     },
-    "DeleteAuthLambdaVersionIXvmZS0besxnzJrRW2zyE3cZFx0NcSQ9m7SffzIk": {
+    "DeleteAuthLambdaVersion7ofg6n0JLes6UGlVeIay7Xc0kSwjiIUGuXGCL9JgPE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
@@ -353,7 +353,7 @@
         "Description": "lambda to delete Authentication from database!"
       }
     },
-    "HeartBeatsLambdaVersionTxv3kLHKyaLi11qD6KH4X58ll8zd0aQlug5RkBk2nrU": {
+    "HeartBeatsLambdaVersionz55tjiXhGru4HLcP3w1PIiD1cMCAAuYfo0wcgkQKU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
@@ -367,7 +367,7 @@
     "HttpApi": {
       "Type": "AWS::ApiGatewayV2::Api",
       "Properties": {
-        "Name": "dev-IoT-SES-restapi",
+        "Name": "dev-IoT-SES-AuthRestApi",
         "ProtocolType": "HTTP"
       }
     },
@@ -766,52 +766,52 @@
         "Ref": "ServerlessDeploymentBucket"
       },
       "Export": {
-        "Name": "sls-IoT-SES-restapi-dev-ServerlessDeploymentBucketName"
+        "Name": "sls-IoT-SES-AuthRestApi-dev-ServerlessDeploymentBucketName"
       }
     },
     "CraeteAuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CraeteAuthLambdaVersionauJhL88JP2s1ED1Wkix5mAhc5oOmr42il94p6lpizI"
+        "Ref": "CraeteAuthLambdaVersionhRgObgMeKpkncxwOiyIGPCXubUKdwuJ6H5VhfXISlI"
       },
       "Export": {
-        "Name": "sls-IoT-SES-restapi-dev-CraeteAuthLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-AuthRestApi-dev-CraeteAuthLambdaFunctionQualifiedArn"
       }
     },
     "ReadAuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ReadAuthLambdaVersionI0xBsnzYHcXauIB4Wi5GN0faSvjb1qhkAgGwMXfun7w"
+        "Ref": "ReadAuthLambdaVersionLFACT4KA1TeyWrrrN9rv09109GG9errwx5jfkJ1io"
       },
       "Export": {
-        "Name": "sls-IoT-SES-restapi-dev-ReadAuthLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-AuthRestApi-dev-ReadAuthLambdaFunctionQualifiedArn"
       }
     },
     "UpdateAuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateAuthLambdaVersionP1gQA6bBOVV0xRT4bcumO1gPBU5nNl1IQ5ZEfOCQc4"
+        "Ref": "UpdateAuthLambdaVersionMt07I9sJeS6r5ceMWsYWEBR3B6C6zNTNy9Pdcph1Azw"
       },
       "Export": {
-        "Name": "sls-IoT-SES-restapi-dev-UpdateAuthLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-AuthRestApi-dev-UpdateAuthLambdaFunctionQualifiedArn"
       }
     },
     "DeleteAuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteAuthLambdaVersionIXvmZS0besxnzJrRW2zyE3cZFx0NcSQ9m7SffzIk"
+        "Ref": "DeleteAuthLambdaVersion7ofg6n0JLes6UGlVeIay7Xc0kSwjiIUGuXGCL9JgPE"
       },
       "Export": {
-        "Name": "sls-IoT-SES-restapi-dev-DeleteAuthLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-AuthRestApi-dev-DeleteAuthLambdaFunctionQualifiedArn"
       }
     },
     "HeartBeatsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HeartBeatsLambdaVersionTxv3kLHKyaLi11qD6KH4X58ll8zd0aQlug5RkBk2nrU"
+        "Ref": "HeartBeatsLambdaVersionz55tjiXhGru4HLcP3w1PIiD1cMCAAuYfo0wcgkQKU"
       },
       "Export": {
-        "Name": "sls-IoT-SES-restapi-dev-HeartBeatsLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-AuthRestApi-dev-HeartBeatsLambdaFunctionQualifiedArn"
       }
     },
     "HttpApiId": {
@@ -820,7 +820,7 @@
         "Ref": "HttpApi"
       },
       "Export": {
-        "Name": "sls-IoT-SES-restapi-dev-HttpApiId"
+        "Name": "sls-IoT-SES-AuthRestApi-dev-HttpApiId"
       }
     },
     "HttpApiUrl": {
@@ -845,7 +845,7 @@
         ]
       },
       "Export": {
-        "Name": "sls-IoT-SES-restapi-dev-HttpApiUrl"
+        "Name": "sls-IoT-SES-AuthRestApi-dev-HttpApiUrl"
       }
     }
   }

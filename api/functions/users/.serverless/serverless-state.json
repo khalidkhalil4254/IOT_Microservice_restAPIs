@@ -1,8 +1,8 @@
 {
   "service": {
-    "service": "IoT-SES-restapi",
+    "service": "IoT-SES-UsersRestApi",
     "serviceObject": {
-      "name": "IoT-SES-restapi"
+      "name": "IoT-SES-UsersRestApi"
     },
     "provider": {
       "name": "aws",
@@ -86,19 +86,19 @@
           "CraeteUsersLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-craeteUsers"
+              "LogGroupName": "/aws/lambda/IoT-SES-UsersRestApi-dev-craeteUsers"
             }
           },
           "ReadUsersLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-readUsers"
+              "LogGroupName": "/aws/lambda/IoT-SES-UsersRestApi-dev-readUsers"
             }
           },
           "HeartBeatsLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-restapi-dev-heartBeats"
+              "LogGroupName": "/aws/lambda/IoT-SES-UsersRestApi-dev-heartBeats"
             }
           },
           "IamRoleLambdaExecution": {
@@ -126,7 +126,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "IoT-SES-restapi",
+                        "IoT-SES-UsersRestApi",
                         "dev",
                         "lambda"
                       ]
@@ -144,7 +144,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-restapi-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-UsersRestApi-dev*:*"
                           }
                         ]
                       },
@@ -155,7 +155,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-restapi-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-UsersRestApi-dev*:*:*"
                           }
                         ]
                       }
@@ -168,7 +168,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "IoT-SES-restapi",
+                    "IoT-SES-UsersRestApi",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -186,11 +186,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-restapi/dev/1685912956132-2023-06-04T21:09:16.132Z/IoT-SES-restapi.zip"
+                "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1687806503344-2023-06-26T19:08:23.344Z/IoT-SES-UsersRestApi.zip"
               },
               "Handler": "createUser.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-restapi-dev-craeteUsers",
+              "FunctionName": "IoT-SES-UsersRestApi-dev-craeteUsers",
               "MemorySize": 1024,
               "Timeout": 6,
               "Description": "lambda to create a new user!",
@@ -212,11 +212,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-restapi/dev/1685912956132-2023-06-04T21:09:16.132Z/IoT-SES-restapi.zip"
+                "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1687806503344-2023-06-26T19:08:23.344Z/IoT-SES-UsersRestApi.zip"
               },
               "Handler": "readUser.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-restapi-dev-readUsers",
+              "FunctionName": "IoT-SES-UsersRestApi-dev-readUsers",
               "MemorySize": 1024,
               "Timeout": 6,
               "Description": "lambda to get all usera from database!",
@@ -238,11 +238,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-restapi/dev/1685912956132-2023-06-04T21:09:16.132Z/IoT-SES-restapi.zip"
+                "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1687806503344-2023-06-26T19:08:23.344Z/IoT-SES-UsersRestApi.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-restapi-dev-heartBeats",
+              "FunctionName": "IoT-SES-UsersRestApi-dev-heartBeats",
               "MemorySize": 1024,
               "Timeout": 6,
               "Description": "lambda to ensure that everything is ok!",
@@ -257,43 +257,43 @@
               "HeartBeatsLogGroup"
             ]
           },
-          "CraeteUsersLambdaVersionCvE2TyeuVMzHgdmg8X4FfXIef3asPbA5iOTUuW81kw": {
+          "CraeteUsersLambdaVersionZQ9EdQryISafjWy282KCFvc8YBFZiTIU8qWriMiaPo": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CraeteUsersLambdaFunction"
               },
-              "CodeSha256": "AGeVoBe8knpYkSGYvOLamqOwbsliX17jtkJMvCTKpYQ=",
+              "CodeSha256": "aKjcUTkv82wME7yoGMcQjfbpWfGiCf7o3JsGdjTFNuA=",
               "Description": "lambda to create a new user!"
             }
           },
-          "ReadUsersLambdaVersionpPLPGMPbIQUx5Ck4QFDsyxdDGo3sLVzNCyNzbkb1E7E": {
+          "ReadUsersLambdaVersionbxlOa7Vuc0l83I7JGafI6O9ouPZpEdLgApQQ3RQ4E8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ReadUsersLambdaFunction"
               },
-              "CodeSha256": "AGeVoBe8knpYkSGYvOLamqOwbsliX17jtkJMvCTKpYQ=",
+              "CodeSha256": "aKjcUTkv82wME7yoGMcQjfbpWfGiCf7o3JsGdjTFNuA=",
               "Description": "lambda to get all usera from database!"
             }
           },
-          "HeartBeatsLambdaVersionOsZ0fpjW13xefvjk2tyCdLGj1x2Xr8GH2URObtLtHiQ": {
+          "HeartBeatsLambdaVersion5hOO0u38DVooWWD3Bm7oWPuEQ7uBJEQH5M5JJHHgtI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HeartBeatsLambdaFunction"
               },
-              "CodeSha256": "AGeVoBe8knpYkSGYvOLamqOwbsliX17jtkJMvCTKpYQ=",
+              "CodeSha256": "aKjcUTkv82wME7yoGMcQjfbpWfGiCf7o3JsGdjTFNuA=",
               "Description": "lambda to ensure that everything is ok!"
             }
           },
           "HttpApi": {
             "Type": "AWS::ApiGatewayV2::Api",
             "Properties": {
-              "Name": "dev-IoT-SES-restapi",
+              "Name": "dev-IoT-SES-UsersRestApi",
               "ProtocolType": "HTTP"
             }
           },
@@ -533,34 +533,34 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-IoT-SES-UsersRestApi-dev-ServerlessDeploymentBucketName"
             }
           },
           "CraeteUsersLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CraeteUsersLambdaVersionCvE2TyeuVMzHgdmg8X4FfXIef3asPbA5iOTUuW81kw"
+              "Ref": "CraeteUsersLambdaVersionZQ9EdQryISafjWy282KCFvc8YBFZiTIU8qWriMiaPo"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-CraeteUsersLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-UsersRestApi-dev-CraeteUsersLambdaFunctionQualifiedArn"
             }
           },
           "ReadUsersLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ReadUsersLambdaVersionpPLPGMPbIQUx5Ck4QFDsyxdDGo3sLVzNCyNzbkb1E7E"
+              "Ref": "ReadUsersLambdaVersionbxlOa7Vuc0l83I7JGafI6O9ouPZpEdLgApQQ3RQ4E8"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-ReadUsersLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-UsersRestApi-dev-ReadUsersLambdaFunctionQualifiedArn"
             }
           },
           "HeartBeatsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HeartBeatsLambdaVersionOsZ0fpjW13xefvjk2tyCdLGj1x2Xr8GH2URObtLtHiQ"
+              "Ref": "HeartBeatsLambdaVersion5hOO0u38DVooWWD3Bm7oWPuEQ7uBJEQH5M5JJHHgtI"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-HeartBeatsLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-UsersRestApi-dev-HeartBeatsLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -569,7 +569,7 @@
               "Ref": "HttpApi"
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-HttpApiId"
+              "Name": "sls-IoT-SES-UsersRestApi-dev-HttpApiId"
             }
           },
           "HttpApiUrl": {
@@ -594,7 +594,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-IoT-SES-restapi-dev-HttpApiUrl"
+              "Name": "sls-IoT-SES-UsersRestApi-dev-HttpApiUrl"
             }
           }
         }
@@ -698,13 +698,13 @@
             "resolvedPath": "/api/v0/users/create"
           }
         ],
-        "name": "IoT-SES-restapi-dev-craeteUsers",
+        "name": "IoT-SES-UsersRestApi-dev-craeteUsers",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CraeteUsersLambdaVersionCvE2TyeuVMzHgdmg8X4FfXIef3asPbA5iOTUuW81kw"
+        "versionLogicalId": "CraeteUsersLambdaVersionZQ9EdQryISafjWy282KCFvc8YBFZiTIU8qWriMiaPo"
       },
       "readUsers": {
         "handler": "readUser.handler",
@@ -719,13 +719,13 @@
             "resolvedPath": "/api/v0/users/read"
           }
         ],
-        "name": "IoT-SES-restapi-dev-readUsers",
+        "name": "IoT-SES-UsersRestApi-dev-readUsers",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ReadUsersLambdaVersionpPLPGMPbIQUx5Ck4QFDsyxdDGo3sLVzNCyNzbkb1E7E"
+        "versionLogicalId": "ReadUsersLambdaVersionbxlOa7Vuc0l83I7JGafI6O9ouPZpEdLgApQQ3RQ4E8"
       },
       "heartBeats": {
         "handler": "index.handler",
@@ -740,19 +740,19 @@
             "resolvedPath": "/api/v0/users"
           }
         ],
-        "name": "IoT-SES-restapi-dev-heartBeats",
+        "name": "IoT-SES-UsersRestApi-dev-heartBeats",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HeartBeatsLambdaVersionOsZ0fpjW13xefvjk2tyCdLGj1x2Xr8GH2URObtLtHiQ"
+        "versionLogicalId": "HeartBeatsLambdaVersion5hOO0u38DVooWWD3Bm7oWPuEQ7uBJEQH5M5JJHHgtI"
       }
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
-      "service": "IoT-SES-restapi",
+      "service": "IoT-SES-UsersRestApi",
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
       },
@@ -762,10 +762,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\users\\.serverless\\IoT-SES-restapi.zip"
+    "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\users\\.serverless\\IoT-SES-UsersRestApi.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/IoT-SES-restapi/dev/1685912956132-2023-06-04T21:09:16.132Z",
-    "artifact": "IoT-SES-restapi.zip"
+    "artifactDirectoryName": "serverless/IoT-SES-UsersRestApi/dev/1687806503344-2023-06-26T19:08:23.344Z",
+    "artifact": "IoT-SES-UsersRestApi.zip"
   }
 }
