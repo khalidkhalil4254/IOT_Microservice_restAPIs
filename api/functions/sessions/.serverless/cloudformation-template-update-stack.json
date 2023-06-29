@@ -71,34 +71,34 @@
         }
       }
     },
-    "CraeteUsersLogGroup": {
+    "CreateSessionLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-UsersRestApi-dev-craeteUsers"
+        "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-createSession"
       }
     },
-    "ReadUsersLogGroup": {
+    "ReadSessionLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-UsersRestApi-dev-readUsers"
+        "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-readSession"
       }
     },
-    "UpdateUsersLogGroup": {
+    "UpdateSessionLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-UsersRestApi-dev-updateUsers"
+        "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-updateSession"
       }
     },
-    "DeleteUsersLogGroup": {
+    "DeleteSessionLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-UsersRestApi-dev-deleteUsers"
+        "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-deleteSession"
       }
     },
-    "HeartBeatsLogGroup": {
+    "HeartBeatSessionLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/IoT-SES-UsersRestApi-dev-heartBeats"
+        "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-heartBeatSession"
       }
     },
     "IamRoleLambdaExecution": {
@@ -126,7 +126,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "IoT-SES-UsersRestApi",
+                  "IoT-SES-SessionsRestApi",
                   "dev",
                   "lambda"
                 ]
@@ -144,7 +144,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-UsersRestApi-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-SessionsRestApi-dev*:*"
                     }
                   ]
                 },
@@ -155,7 +155,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-UsersRestApi-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-SessionsRestApi-dev*:*:*"
                     }
                   ]
                 }
@@ -168,7 +168,7 @@
           "Fn::Join": [
             "-",
             [
-              "IoT-SES-UsersRestApi",
+              "IoT-SES-SessionsRestApi",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -179,21 +179,21 @@
         }
       }
     },
-    "CraeteUsersLambdaFunction": {
+    "CreateSessionLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688068751581-2023-06-29T19:59:11.581Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
         },
-        "Handler": "createUser.handler",
+        "Handler": "createSession.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-UsersRestApi-dev-craeteUsers",
+        "FunctionName": "IoT-SES-SessionsRestApi-dev-createSession",
         "MemorySize": 1024,
         "Timeout": 6,
-        "Description": "lambda to create a new user!",
+        "Description": "lambda function to create a new session in database.",
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -202,24 +202,24 @@
         }
       },
       "DependsOn": [
-        "CraeteUsersLogGroup"
+        "CreateSessionLogGroup"
       ]
     },
-    "ReadUsersLambdaFunction": {
+    "ReadSessionLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688068751581-2023-06-29T19:59:11.581Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
         },
-        "Handler": "readUser.handler",
+        "Handler": "readSession.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-UsersRestApi-dev-readUsers",
+        "FunctionName": "IoT-SES-SessionsRestApi-dev-readSession",
         "MemorySize": 1024,
         "Timeout": 6,
-        "Description": "lambda to get all usera from database!",
+        "Description": "lambda function to read sessions.",
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -228,24 +228,24 @@
         }
       },
       "DependsOn": [
-        "ReadUsersLogGroup"
+        "ReadSessionLogGroup"
       ]
     },
-    "UpdateUsersLambdaFunction": {
+    "UpdateSessionLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688068751581-2023-06-29T19:59:11.581Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
         },
-        "Handler": "updateUser.handler",
+        "Handler": "updateSession.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-UsersRestApi-dev-updateUsers",
+        "FunctionName": "IoT-SES-SessionsRestApi-dev-updateSession",
         "MemorySize": 1024,
         "Timeout": 6,
-        "Description": "lambda function to update an existing user in database.",
+        "Description": "lambda fucntion to update existing session details.",
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -254,24 +254,24 @@
         }
       },
       "DependsOn": [
-        "UpdateUsersLogGroup"
+        "UpdateSessionLogGroup"
       ]
     },
-    "DeleteUsersLambdaFunction": {
+    "DeleteSessionLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688068751581-2023-06-29T19:59:11.581Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
         },
-        "Handler": "deleteUser.handler",
+        "Handler": "deleteSession.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-UsersRestApi-dev-deleteUsers",
+        "FunctionName": "IoT-SES-SessionsRestApi-dev-deleteSession",
         "MemorySize": 1024,
         "Timeout": 6,
-        "Description": "lambda function to delete an existing user from the database.",
+        "Description": "lambda function to delete an existing session.",
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -280,24 +280,24 @@
         }
       },
       "DependsOn": [
-        "DeleteUsersLogGroup"
+        "DeleteSessionLogGroup"
       ]
     },
-    "HeartBeatsLambdaFunction": {
+    "HeartBeatSessionLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688068751581-2023-06-29T19:59:11.581Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
-        "FunctionName": "IoT-SES-UsersRestApi-dev-heartBeats",
+        "FunctionName": "IoT-SES-SessionsRestApi-dev-heartBeatSession",
         "MemorySize": 1024,
         "Timeout": 6,
-        "Description": "lambda to ensure that everything is ok!",
+        "Description": "lambda function for determining that the service is working perfectly.",
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -306,68 +306,68 @@
         }
       },
       "DependsOn": [
-        "HeartBeatsLogGroup"
+        "HeartBeatSessionLogGroup"
       ]
     },
-    "CraeteUsersLambdaVersionS6hGpqtyjLYppeuh9bqKnSFEMto2B1fUlInHYXbrg": {
+    "CreateSessionLambdaVersionjgz0V1pLVsvXGHFHZAdtWHzKhCVGNLKFoz4OrbUQnvM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "CraeteUsersLambdaFunction"
+          "Ref": "CreateSessionLambdaFunction"
         },
-        "CodeSha256": "8VPpjtUIlaEKHWJAAlxuCR1HjegnWZilwELLd5dFpzE=",
-        "Description": "lambda to create a new user!"
+        "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+        "Description": "lambda function to create a new session in database."
       }
     },
-    "ReadUsersLambdaVersionmdL4PlT4ajWVUXtRqOqkbb50uTsrPWT6TooGgeIOx7g": {
+    "ReadSessionLambdaVersionijn6u76nkq5RByBUUhPYfC05oSaZQLbf1H4pee1TC4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "ReadUsersLambdaFunction"
+          "Ref": "ReadSessionLambdaFunction"
         },
-        "CodeSha256": "8VPpjtUIlaEKHWJAAlxuCR1HjegnWZilwELLd5dFpzE=",
-        "Description": "lambda to get all usera from database!"
+        "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+        "Description": "lambda function to read sessions."
       }
     },
-    "UpdateUsersLambdaVersionnntxylDjntgUc5LfKTqljqGPjWQzjGl1PyveZBc": {
+    "UpdateSessionLambdaVersioncoefgPxdmo1ACmhk33Ja2cTiBGBM0wTAlcG1k0KZWM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "UpdateUsersLambdaFunction"
+          "Ref": "UpdateSessionLambdaFunction"
         },
-        "CodeSha256": "8VPpjtUIlaEKHWJAAlxuCR1HjegnWZilwELLd5dFpzE=",
-        "Description": "lambda function to update an existing user in database."
+        "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+        "Description": "lambda fucntion to update existing session details."
       }
     },
-    "DeleteUsersLambdaVersionJrbZNzHB4WEbD8H6f7t3KEh2XNR2oddvCh6eLoYHb4s": {
+    "DeleteSessionLambdaVersionScnNCE9j2QgWNfexqb7XLO93UVM9zFy6FT85Fqnk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "DeleteUsersLambdaFunction"
+          "Ref": "DeleteSessionLambdaFunction"
         },
-        "CodeSha256": "8VPpjtUIlaEKHWJAAlxuCR1HjegnWZilwELLd5dFpzE=",
-        "Description": "lambda function to delete an existing user from the database."
+        "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+        "Description": "lambda function to delete an existing session."
       }
     },
-    "HeartBeatsLambdaVersionqXx6X5shUWIQAGjpVij61wz6vw6WqVMLxZY3R7fKQ": {
+    "HeartBeatSessionLambdaVersioniTi1xs0L6QctNMzfCKUZAieFH7CyRRvMkDaRjt6xQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "HeartBeatsLambdaFunction"
+          "Ref": "HeartBeatSessionLambdaFunction"
         },
-        "CodeSha256": "8VPpjtUIlaEKHWJAAlxuCR1HjegnWZilwELLd5dFpzE=",
-        "Description": "lambda to ensure that everything is ok!"
+        "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+        "Description": "lambda function for determining that the service is working perfectly."
       }
     },
     "HttpApi": {
       "Type": "AWS::ApiGatewayV2::Api",
       "Properties": {
-        "Name": "dev-IoT-SES-UsersRestApi",
+        "Name": "dev-IoT-SES-SessionsRestApi",
         "ProtocolType": "HTTP"
       }
     },
@@ -384,12 +384,12 @@
         }
       }
     },
-    "CraeteUsersLambdaPermissionHttpApi": {
+    "CreateSessionLambdaPermissionHttpApi": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "CraeteUsersLambdaFunction",
+            "CreateSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -421,7 +421,7 @@
         }
       }
     },
-    "HttpApiIntegrationCraeteUsers": {
+    "HttpApiIntegrationCreateSession": {
       "Type": "AWS::ApiGatewayV2::Integration",
       "Properties": {
         "ApiId": {
@@ -430,7 +430,7 @@
         "IntegrationType": "AWS_PROXY",
         "IntegrationUri": {
           "Fn::GetAtt": [
-            "CraeteUsersLambdaFunction",
+            "CreateSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -438,33 +438,33 @@
         "TimeoutInMillis": 30000
       }
     },
-    "HttpApiRoutePostApiV0UsersCreate": {
+    "HttpApiRoutePostApiV0SessionsCreate": {
       "Type": "AWS::ApiGatewayV2::Route",
       "Properties": {
         "ApiId": {
           "Ref": "HttpApi"
         },
-        "RouteKey": "POST /api/v0/users/create",
+        "RouteKey": "POST /api/v0/sessions/create",
         "Target": {
           "Fn::Join": [
             "/",
             [
               "integrations",
               {
-                "Ref": "HttpApiIntegrationCraeteUsers"
+                "Ref": "HttpApiIntegrationCreateSession"
               }
             ]
           ]
         }
       },
-      "DependsOn": "HttpApiIntegrationCraeteUsers"
+      "DependsOn": "HttpApiIntegrationCreateSession"
     },
-    "ReadUsersLambdaPermissionHttpApi": {
+    "ReadSessionLambdaPermissionHttpApi": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "ReadUsersLambdaFunction",
+            "ReadSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -496,7 +496,7 @@
         }
       }
     },
-    "HttpApiIntegrationReadUsers": {
+    "HttpApiIntegrationReadSession": {
       "Type": "AWS::ApiGatewayV2::Integration",
       "Properties": {
         "ApiId": {
@@ -505,7 +505,7 @@
         "IntegrationType": "AWS_PROXY",
         "IntegrationUri": {
           "Fn::GetAtt": [
-            "ReadUsersLambdaFunction",
+            "ReadSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -513,33 +513,33 @@
         "TimeoutInMillis": 30000
       }
     },
-    "HttpApiRouteGetApiV0UsersRead": {
+    "HttpApiRouteGetApiV0SessionsRead": {
       "Type": "AWS::ApiGatewayV2::Route",
       "Properties": {
         "ApiId": {
           "Ref": "HttpApi"
         },
-        "RouteKey": "GET /api/v0/users/read",
+        "RouteKey": "GET /api/v0/sessions/read",
         "Target": {
           "Fn::Join": [
             "/",
             [
               "integrations",
               {
-                "Ref": "HttpApiIntegrationReadUsers"
+                "Ref": "HttpApiIntegrationReadSession"
               }
             ]
           ]
         }
       },
-      "DependsOn": "HttpApiIntegrationReadUsers"
+      "DependsOn": "HttpApiIntegrationReadSession"
     },
-    "UpdateUsersLambdaPermissionHttpApi": {
+    "UpdateSessionLambdaPermissionHttpApi": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "UpdateUsersLambdaFunction",
+            "UpdateSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -571,7 +571,7 @@
         }
       }
     },
-    "HttpApiIntegrationUpdateUsers": {
+    "HttpApiIntegrationUpdateSession": {
       "Type": "AWS::ApiGatewayV2::Integration",
       "Properties": {
         "ApiId": {
@@ -580,7 +580,7 @@
         "IntegrationType": "AWS_PROXY",
         "IntegrationUri": {
           "Fn::GetAtt": [
-            "UpdateUsersLambdaFunction",
+            "UpdateSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -588,33 +588,33 @@
         "TimeoutInMillis": 30000
       }
     },
-    "HttpApiRoutePutApiV0UsersUpdate": {
+    "HttpApiRoutePutApiV0SessionsUpdate": {
       "Type": "AWS::ApiGatewayV2::Route",
       "Properties": {
         "ApiId": {
           "Ref": "HttpApi"
         },
-        "RouteKey": "PUT /api/v0/users/update",
+        "RouteKey": "PUT /api/v0/sessions/update",
         "Target": {
           "Fn::Join": [
             "/",
             [
               "integrations",
               {
-                "Ref": "HttpApiIntegrationUpdateUsers"
+                "Ref": "HttpApiIntegrationUpdateSession"
               }
             ]
           ]
         }
       },
-      "DependsOn": "HttpApiIntegrationUpdateUsers"
+      "DependsOn": "HttpApiIntegrationUpdateSession"
     },
-    "DeleteUsersLambdaPermissionHttpApi": {
+    "DeleteSessionLambdaPermissionHttpApi": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "DeleteUsersLambdaFunction",
+            "DeleteSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -646,7 +646,7 @@
         }
       }
     },
-    "HttpApiIntegrationDeleteUsers": {
+    "HttpApiIntegrationDeleteSession": {
       "Type": "AWS::ApiGatewayV2::Integration",
       "Properties": {
         "ApiId": {
@@ -655,7 +655,7 @@
         "IntegrationType": "AWS_PROXY",
         "IntegrationUri": {
           "Fn::GetAtt": [
-            "DeleteUsersLambdaFunction",
+            "DeleteSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -663,33 +663,33 @@
         "TimeoutInMillis": 30000
       }
     },
-    "HttpApiRouteDeleteApiV0UsersDelete": {
+    "HttpApiRouteDeleteApiV0SessionsDelete": {
       "Type": "AWS::ApiGatewayV2::Route",
       "Properties": {
         "ApiId": {
           "Ref": "HttpApi"
         },
-        "RouteKey": "DELETE /api/v0/users/delete",
+        "RouteKey": "DELETE /api/v0/sessions/delete",
         "Target": {
           "Fn::Join": [
             "/",
             [
               "integrations",
               {
-                "Ref": "HttpApiIntegrationDeleteUsers"
+                "Ref": "HttpApiIntegrationDeleteSession"
               }
             ]
           ]
         }
       },
-      "DependsOn": "HttpApiIntegrationDeleteUsers"
+      "DependsOn": "HttpApiIntegrationDeleteSession"
     },
-    "HeartBeatsLambdaPermissionHttpApi": {
+    "HeartBeatSessionLambdaPermissionHttpApi": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "HeartBeatsLambdaFunction",
+            "HeartBeatSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -721,7 +721,7 @@
         }
       }
     },
-    "HttpApiIntegrationHeartBeats": {
+    "HttpApiIntegrationHeartBeatSession": {
       "Type": "AWS::ApiGatewayV2::Integration",
       "Properties": {
         "ApiId": {
@@ -730,7 +730,7 @@
         "IntegrationType": "AWS_PROXY",
         "IntegrationUri": {
           "Fn::GetAtt": [
-            "HeartBeatsLambdaFunction",
+            "HeartBeatSessionLambdaFunction",
             "Arn"
           ]
         },
@@ -738,26 +738,26 @@
         "TimeoutInMillis": 30000
       }
     },
-    "HttpApiRouteGetApiV0Users": {
+    "HttpApiRouteGetApiV0Sessions": {
       "Type": "AWS::ApiGatewayV2::Route",
       "Properties": {
         "ApiId": {
           "Ref": "HttpApi"
         },
-        "RouteKey": "GET /api/v0/users",
+        "RouteKey": "GET /api/v0/sessions",
         "Target": {
           "Fn::Join": [
             "/",
             [
               "integrations",
               {
-                "Ref": "HttpApiIntegrationHeartBeats"
+                "Ref": "HttpApiIntegrationHeartBeatSession"
               }
             ]
           ]
         }
       },
-      "DependsOn": "HttpApiIntegrationHeartBeats"
+      "DependsOn": "HttpApiIntegrationHeartBeatSession"
     }
   },
   "Outputs": {
@@ -766,52 +766,52 @@
         "Ref": "ServerlessDeploymentBucket"
       },
       "Export": {
-        "Name": "sls-IoT-SES-UsersRestApi-dev-ServerlessDeploymentBucketName"
+        "Name": "sls-IoT-SES-SessionsRestApi-dev-ServerlessDeploymentBucketName"
       }
     },
-    "CraeteUsersLambdaFunctionQualifiedArn": {
+    "CreateSessionLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CraeteUsersLambdaVersionS6hGpqtyjLYppeuh9bqKnSFEMto2B1fUlInHYXbrg"
+        "Ref": "CreateSessionLambdaVersionjgz0V1pLVsvXGHFHZAdtWHzKhCVGNLKFoz4OrbUQnvM"
       },
       "Export": {
-        "Name": "sls-IoT-SES-UsersRestApi-dev-CraeteUsersLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-SessionsRestApi-dev-CreateSessionLambdaFunctionQualifiedArn"
       }
     },
-    "ReadUsersLambdaFunctionQualifiedArn": {
+    "ReadSessionLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ReadUsersLambdaVersionmdL4PlT4ajWVUXtRqOqkbb50uTsrPWT6TooGgeIOx7g"
+        "Ref": "ReadSessionLambdaVersionijn6u76nkq5RByBUUhPYfC05oSaZQLbf1H4pee1TC4"
       },
       "Export": {
-        "Name": "sls-IoT-SES-UsersRestApi-dev-ReadUsersLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-SessionsRestApi-dev-ReadSessionLambdaFunctionQualifiedArn"
       }
     },
-    "UpdateUsersLambdaFunctionQualifiedArn": {
+    "UpdateSessionLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateUsersLambdaVersionnntxylDjntgUc5LfKTqljqGPjWQzjGl1PyveZBc"
+        "Ref": "UpdateSessionLambdaVersioncoefgPxdmo1ACmhk33Ja2cTiBGBM0wTAlcG1k0KZWM"
       },
       "Export": {
-        "Name": "sls-IoT-SES-UsersRestApi-dev-UpdateUsersLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-SessionsRestApi-dev-UpdateSessionLambdaFunctionQualifiedArn"
       }
     },
-    "DeleteUsersLambdaFunctionQualifiedArn": {
+    "DeleteSessionLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteUsersLambdaVersionJrbZNzHB4WEbD8H6f7t3KEh2XNR2oddvCh6eLoYHb4s"
+        "Ref": "DeleteSessionLambdaVersionScnNCE9j2QgWNfexqb7XLO93UVM9zFy6FT85Fqnk"
       },
       "Export": {
-        "Name": "sls-IoT-SES-UsersRestApi-dev-DeleteUsersLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-SessionsRestApi-dev-DeleteSessionLambdaFunctionQualifiedArn"
       }
     },
-    "HeartBeatsLambdaFunctionQualifiedArn": {
+    "HeartBeatSessionLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HeartBeatsLambdaVersionqXx6X5shUWIQAGjpVij61wz6vw6WqVMLxZY3R7fKQ"
+        "Ref": "HeartBeatSessionLambdaVersioniTi1xs0L6QctNMzfCKUZAieFH7CyRRvMkDaRjt6xQ"
       },
       "Export": {
-        "Name": "sls-IoT-SES-UsersRestApi-dev-HeartBeatsLambdaFunctionQualifiedArn"
+        "Name": "sls-IoT-SES-SessionsRestApi-dev-HeartBeatSessionLambdaFunctionQualifiedArn"
       }
     },
     "HttpApiId": {
@@ -820,7 +820,7 @@
         "Ref": "HttpApi"
       },
       "Export": {
-        "Name": "sls-IoT-SES-UsersRestApi-dev-HttpApiId"
+        "Name": "sls-IoT-SES-SessionsRestApi-dev-HttpApiId"
       }
     },
     "HttpApiUrl": {
@@ -845,7 +845,7 @@
         ]
       },
       "Export": {
-        "Name": "sls-IoT-SES-UsersRestApi-dev-HttpApiUrl"
+        "Name": "sls-IoT-SES-SessionsRestApi-dev-HttpApiUrl"
       }
     }
   }

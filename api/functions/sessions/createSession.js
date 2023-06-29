@@ -1,8 +1,8 @@
-const res = require('../../common/responses');
-const config = require('../../common/config');
+const res = require('./common/responses');
+const config = require('./common/config');
 const mysql = require('mysql');
 
-module.exports.handler=async(event, context, callback)=>{
+module.exports.handler = async(event, context, callback)=>{
 
     const data = JSON.parse(event.body);
     const speaker = data.speaker;
@@ -31,11 +31,12 @@ module.exports.handler=async(event, context, callback)=>{
         endTime
     }
 
-    const query = `select * from sessions;`;
+
+    const query = `INSERT INTO sessions(session_speaker ,session_title ,session_company ,session_start_time ,session_end_time ) VALUES ('${speaker}','${title}','${company}','${startTime}','${endTime}');`;
 
 
     const results = await new Promise((resolve, reject) => {
-        pool.query(query, newSessionDetails, (error, results, fields) => {
+        connectionPool.query(query, newSessionDetails, (error, results, fields) => {
             if (error) {
                 console.error(error);
                 reject(results);
@@ -48,17 +49,20 @@ module.exports.handler=async(event, context, callback)=>{
       });
 
       // Close the connection pool
-      pool.end();
+      connectionPool.end();
 
+      console.log(`Result: ${results}`);
+      
 
-      if(results.length>0){
+      if(results!=null || results.length!=0){
         console.log(`Result: ${results}`);
         return res._200;
       }
 
+
       else{
-        console.log(`Not found any resources!`);
-        return res._404;
+        console.log(`Not created any resources!`);
+        return res._409;
       }
 
 

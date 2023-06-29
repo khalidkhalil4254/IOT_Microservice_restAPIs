@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.9.3"
   },
   "name": "IOT-API",
   "version": "1.8.2",

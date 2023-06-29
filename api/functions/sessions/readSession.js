@@ -1,8 +1,11 @@
-const res = require('../../common/responses');
-const config = require('../../common/config');
+const res = require('./common/responses');
+const config = require('./common/config');
 const mysql = require('mysql');
 
 module.exports.handler=async(event, context, callback)=>{
+
+
+    console.log(`Connecting to db...`);
 
     //creating database connections:
     const connectionPool = mysql.createPool({
@@ -14,11 +17,13 @@ module.exports.handler=async(event, context, callback)=>{
 
 
 
-    const query = `select * from sessions;`;
+    console.log(`Connected to db...`);
 
+    const query = `select * from sessions;`;
+    const item={}
 
     const results = await new Promise((resolve, reject) => {
-        pool.query(query, (error, results, fields) => {
+      connectionPool.query(query,item ,(error, results, fields) => {
             if (error) {
                 console.error(error);
                 reject(results);
@@ -31,7 +36,7 @@ module.exports.handler=async(event, context, callback)=>{
       });
 
       // Close the connection pool
-      pool.end();
+      connectionPool.end();
 
 
       if(results.length>0){

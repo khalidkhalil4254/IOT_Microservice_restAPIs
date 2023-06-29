@@ -1,12 +1,12 @@
-service: nodemailer
+service: IoT-SES-EmailsRestApi
 provider:
   name: aws
   runtime: nodejs14.x
   region: us-east-1
 functions:
   mailer:
-    handler: index.handler
+    handler: createEmail.handler
     events:
       - http:
-          path: /api/v0/mails/send
+          path: /api/v0/emails/send
           method: POST

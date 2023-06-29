@@ -1,13 +1,13 @@
 {
   "service": {
-    "service": "IoT-SES-AuthRestApi",
+    "service": "IoT-SES-SessionsRestApi",
     "serviceObject": {
-      "name": "IoT-SES-AuthRestApi"
+      "name": "IoT-SES-SessionsRestApi"
     },
     "provider": {
       "name": "aws",
-      "region": "us-east-1",
       "runtime": "nodejs14.x",
+      "region": "us-east-1",
       "stage": "dev",
       "versionFunctions": true,
       "compiledCloudFormationTemplate": {
@@ -83,34 +83,34 @@
               }
             }
           },
-          "CraeteAuthLogGroup": {
+          "CreateSessionLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-craeteAuth"
+              "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-createSession"
             }
           },
-          "ReadAuthLogGroup": {
+          "ReadSessionLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-readAuth"
+              "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-readSession"
             }
           },
-          "UpdateAuthLogGroup": {
+          "UpdateSessionLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-updateAuth"
+              "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-updateSession"
             }
           },
-          "DeleteAuthLogGroup": {
+          "DeleteSessionLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-deleteAuth"
+              "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-deleteSession"
             }
           },
-          "HeartBeatsLogGroup": {
+          "HeartBeatSessionLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-heartBeats"
+              "LogGroupName": "/aws/lambda/IoT-SES-SessionsRestApi-dev-heartBeatSession"
             }
           },
           "IamRoleLambdaExecution": {
@@ -138,7 +138,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "IoT-SES-AuthRestApi",
+                        "IoT-SES-SessionsRestApi",
                         "dev",
                         "lambda"
                       ]
@@ -156,7 +156,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-AuthRestApi-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-SessionsRestApi-dev*:*"
                           }
                         ]
                       },
@@ -167,7 +167,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-AuthRestApi-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/IoT-SES-SessionsRestApi-dev*:*:*"
                           }
                         ]
                       }
@@ -180,7 +180,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "IoT-SES-AuthRestApi",
+                    "IoT-SES-SessionsRestApi",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -191,21 +191,21 @@
               }
             }
           },
-          "CraeteAuthLambdaFunction": {
+          "CreateSessionLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
               },
-              "Handler": "createAuth.handler",
+              "Handler": "createSession.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-AuthRestApi-dev-craeteAuth",
+              "FunctionName": "IoT-SES-SessionsRestApi-dev-createSession",
               "MemorySize": 1024,
               "Timeout": 6,
-              "Description": "lambda to create a new Authentication!",
+              "Description": "lambda function to create a new session in database.",
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -214,24 +214,24 @@
               }
             },
             "DependsOn": [
-              "CraeteAuthLogGroup"
+              "CreateSessionLogGroup"
             ]
           },
-          "ReadAuthLambdaFunction": {
+          "ReadSessionLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
               },
-              "Handler": "readAuth.handler",
+              "Handler": "readSession.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-AuthRestApi-dev-readAuth",
+              "FunctionName": "IoT-SES-SessionsRestApi-dev-readSession",
               "MemorySize": 1024,
               "Timeout": 6,
-              "Description": "lambda to get Authentication from database!",
+              "Description": "lambda function to read sessions.",
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -240,24 +240,24 @@
               }
             },
             "DependsOn": [
-              "ReadAuthLogGroup"
+              "ReadSessionLogGroup"
             ]
           },
-          "UpdateAuthLambdaFunction": {
+          "UpdateSessionLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
               },
-              "Handler": "updateAuth.handler",
+              "Handler": "updateSession.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-AuthRestApi-dev-updateAuth",
+              "FunctionName": "IoT-SES-SessionsRestApi-dev-updateSession",
               "MemorySize": 1024,
               "Timeout": 6,
-              "Description": "lambda to update Authentication in database!",
+              "Description": "lambda fucntion to update existing session details.",
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -266,24 +266,24 @@
               }
             },
             "DependsOn": [
-              "UpdateAuthLogGroup"
+              "UpdateSessionLogGroup"
             ]
           },
-          "DeleteAuthLambdaFunction": {
+          "DeleteSessionLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
               },
-              "Handler": "readAuth.handler",
+              "Handler": "deleteSession.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-AuthRestApi-dev-deleteAuth",
+              "FunctionName": "IoT-SES-SessionsRestApi-dev-deleteSession",
               "MemorySize": 1024,
               "Timeout": 6,
-              "Description": "lambda to delete Authentication from database!",
+              "Description": "lambda function to delete an existing session.",
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -292,24 +292,24 @@
               }
             },
             "DependsOn": [
-              "DeleteAuthLogGroup"
+              "DeleteSessionLogGroup"
             ]
           },
-          "HeartBeatsLambdaFunction": {
+          "HeartBeatSessionLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "IoT-SES-AuthRestApi-dev-heartBeats",
+              "FunctionName": "IoT-SES-SessionsRestApi-dev-heartBeatSession",
               "MemorySize": 1024,
               "Timeout": 6,
-              "Description": "lambda to ensure that everything is ok!",
+              "Description": "lambda function for determining that the service is working perfectly.",
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -318,68 +318,68 @@
               }
             },
             "DependsOn": [
-              "HeartBeatsLogGroup"
+              "HeartBeatSessionLogGroup"
             ]
           },
-          "CraeteAuthLambdaVersionEa9neaOY1W38SubDNlj15f56cA20USj6rQEXd7ehEAI": {
+          "CreateSessionLambdaVersionjgz0V1pLVsvXGHFHZAdtWHzKhCVGNLKFoz4OrbUQnvM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "CraeteAuthLambdaFunction"
+                "Ref": "CreateSessionLambdaFunction"
               },
-              "CodeSha256": "PMniKrr+s1nNk8Y3EezVwIzrtWjs20+6ae//x86rn9w=",
-              "Description": "lambda to create a new Authentication!"
+              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "Description": "lambda function to create a new session in database."
             }
           },
-          "ReadAuthLambdaVersionVxJojRzB9rWvIwwW9hOCyS23HZ2y0HaGyotOdX7E2E": {
+          "ReadSessionLambdaVersionijn6u76nkq5RByBUUhPYfC05oSaZQLbf1H4pee1TC4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "ReadAuthLambdaFunction"
+                "Ref": "ReadSessionLambdaFunction"
               },
-              "CodeSha256": "PMniKrr+s1nNk8Y3EezVwIzrtWjs20+6ae//x86rn9w=",
-              "Description": "lambda to get Authentication from database!"
+              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "Description": "lambda function to read sessions."
             }
           },
-          "UpdateAuthLambdaVersionuolvtFObGaBRqb49ipwnY7PZCTopZcYkci7HWvwSLqA": {
+          "UpdateSessionLambdaVersioncoefgPxdmo1ACmhk33Ja2cTiBGBM0wTAlcG1k0KZWM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "UpdateAuthLambdaFunction"
+                "Ref": "UpdateSessionLambdaFunction"
               },
-              "CodeSha256": "PMniKrr+s1nNk8Y3EezVwIzrtWjs20+6ae//x86rn9w=",
-              "Description": "lambda to update Authentication in database!"
+              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "Description": "lambda fucntion to update existing session details."
             }
           },
-          "DeleteAuthLambdaVersion0BxCRJ1UhKJZ2PPTXO8xUhj9mt7t3ypkYNn4n1Zj8ns": {
+          "DeleteSessionLambdaVersionScnNCE9j2QgWNfexqb7XLO93UVM9zFy6FT85Fqnk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "DeleteAuthLambdaFunction"
+                "Ref": "DeleteSessionLambdaFunction"
               },
-              "CodeSha256": "PMniKrr+s1nNk8Y3EezVwIzrtWjs20+6ae//x86rn9w=",
-              "Description": "lambda to delete Authentication from database!"
+              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "Description": "lambda function to delete an existing session."
             }
           },
-          "HeartBeatsLambdaVersionQfGD4vf8o3SionmAtzBrJa2vyomJQxBj5PAE7XRajk": {
+          "HeartBeatSessionLambdaVersioniTi1xs0L6QctNMzfCKUZAieFH7CyRRvMkDaRjt6xQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
-                "Ref": "HeartBeatsLambdaFunction"
+                "Ref": "HeartBeatSessionLambdaFunction"
               },
-              "CodeSha256": "PMniKrr+s1nNk8Y3EezVwIzrtWjs20+6ae//x86rn9w=",
-              "Description": "lambda to ensure that everything is ok!"
+              "CodeSha256": "zFWqep2pSrNj7LhwzwJgaJUw1uLrX/6Zn2weMw/grAM=",
+              "Description": "lambda function for determining that the service is working perfectly."
             }
           },
           "HttpApi": {
             "Type": "AWS::ApiGatewayV2::Api",
             "Properties": {
-              "Name": "dev-IoT-SES-AuthRestApi",
+              "Name": "dev-IoT-SES-SessionsRestApi",
               "ProtocolType": "HTTP"
             }
           },
@@ -396,12 +396,12 @@
               }
             }
           },
-          "CraeteAuthLambdaPermissionHttpApi": {
+          "CreateSessionLambdaPermissionHttpApi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "CraeteAuthLambdaFunction",
+                  "CreateSessionLambdaFunction",
                   "Arn"
                 ]
               },
@@ -433,7 +433,7 @@
               }
             }
           },
-          "HttpApiIntegrationCraeteAuth": {
+          "HttpApiIntegrationCreateSession": {
             "Type": "AWS::ApiGatewayV2::Integration",
             "Properties": {
               "ApiId": {
@@ -441,39 +441,39 @@
               },
               "IntegrationType": "AWS_PROXY",
               "IntegrationUri": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"CraeteAuthLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"CreateSessionLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
               },
               "PayloadFormatVersion": "2.0",
               "TimeoutInMillis": 30000
             }
           },
-          "HttpApiRoutePostApiV0AuthCreate": {
+          "HttpApiRoutePostApiV0SessionsCreate": {
             "Type": "AWS::ApiGatewayV2::Route",
             "Properties": {
               "ApiId": {
                 "Ref": "HttpApi"
               },
-              "RouteKey": "POST /api/v0/auth/create",
+              "RouteKey": "POST /api/v0/sessions/create",
               "Target": {
                 "Fn::Join": [
                   "/",
                   [
                     "integrations",
                     {
-                      "Ref": "HttpApiIntegrationCraeteAuth"
+                      "Ref": "HttpApiIntegrationCreateSession"
                     }
                   ]
                 ]
               }
             },
-            "DependsOn": "HttpApiIntegrationCraeteAuth"
+            "DependsOn": "HttpApiIntegrationCreateSession"
           },
-          "ReadAuthLambdaPermissionHttpApi": {
+          "ReadSessionLambdaPermissionHttpApi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "ReadAuthLambdaFunction",
+                  "ReadSessionLambdaFunction",
                   "Arn"
                 ]
               },
@@ -505,7 +505,7 @@
               }
             }
           },
-          "HttpApiIntegrationReadAuth": {
+          "HttpApiIntegrationReadSession": {
             "Type": "AWS::ApiGatewayV2::Integration",
             "Properties": {
               "ApiId": {
@@ -513,39 +513,39 @@
               },
               "IntegrationType": "AWS_PROXY",
               "IntegrationUri": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ReadAuthLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ReadSessionLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
               },
               "PayloadFormatVersion": "2.0",
               "TimeoutInMillis": 30000
             }
           },
-          "HttpApiRouteGetApiV0AuthRead": {
+          "HttpApiRouteGetApiV0SessionsRead": {
             "Type": "AWS::ApiGatewayV2::Route",
             "Properties": {
               "ApiId": {
                 "Ref": "HttpApi"
               },
-              "RouteKey": "GET /api/v0/auth/read",
+              "RouteKey": "GET /api/v0/sessions/read",
               "Target": {
                 "Fn::Join": [
                   "/",
                   [
                     "integrations",
                     {
-                      "Ref": "HttpApiIntegrationReadAuth"
+                      "Ref": "HttpApiIntegrationReadSession"
                     }
                   ]
                 ]
               }
             },
-            "DependsOn": "HttpApiIntegrationReadAuth"
+            "DependsOn": "HttpApiIntegrationReadSession"
           },
-          "UpdateAuthLambdaPermissionHttpApi": {
+          "UpdateSessionLambdaPermissionHttpApi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "UpdateAuthLambdaFunction",
+                  "UpdateSessionLambdaFunction",
                   "Arn"
                 ]
               },
@@ -577,7 +577,7 @@
               }
             }
           },
-          "HttpApiIntegrationUpdateAuth": {
+          "HttpApiIntegrationUpdateSession": {
             "Type": "AWS::ApiGatewayV2::Integration",
             "Properties": {
               "ApiId": {
@@ -585,39 +585,39 @@
               },
               "IntegrationType": "AWS_PROXY",
               "IntegrationUri": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"UpdateAuthLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"UpdateSessionLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
               },
               "PayloadFormatVersion": "2.0",
               "TimeoutInMillis": 30000
             }
           },
-          "HttpApiRoutePutApiV0AuthUpdate": {
+          "HttpApiRoutePutApiV0SessionsUpdate": {
             "Type": "AWS::ApiGatewayV2::Route",
             "Properties": {
               "ApiId": {
                 "Ref": "HttpApi"
               },
-              "RouteKey": "PUT /api/v0/auth/update",
+              "RouteKey": "PUT /api/v0/sessions/update",
               "Target": {
                 "Fn::Join": [
                   "/",
                   [
                     "integrations",
                     {
-                      "Ref": "HttpApiIntegrationUpdateAuth"
+                      "Ref": "HttpApiIntegrationUpdateSession"
                     }
                   ]
                 ]
               }
             },
-            "DependsOn": "HttpApiIntegrationUpdateAuth"
+            "DependsOn": "HttpApiIntegrationUpdateSession"
           },
-          "DeleteAuthLambdaPermissionHttpApi": {
+          "DeleteSessionLambdaPermissionHttpApi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "DeleteAuthLambdaFunction",
+                  "DeleteSessionLambdaFunction",
                   "Arn"
                 ]
               },
@@ -649,7 +649,7 @@
               }
             }
           },
-          "HttpApiIntegrationDeleteAuth": {
+          "HttpApiIntegrationDeleteSession": {
             "Type": "AWS::ApiGatewayV2::Integration",
             "Properties": {
               "ApiId": {
@@ -657,39 +657,39 @@
               },
               "IntegrationType": "AWS_PROXY",
               "IntegrationUri": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"DeleteAuthLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"DeleteSessionLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
               },
               "PayloadFormatVersion": "2.0",
               "TimeoutInMillis": 30000
             }
           },
-          "HttpApiRouteDeleteApiV0AuthDelete": {
+          "HttpApiRouteDeleteApiV0SessionsDelete": {
             "Type": "AWS::ApiGatewayV2::Route",
             "Properties": {
               "ApiId": {
                 "Ref": "HttpApi"
               },
-              "RouteKey": "DELETE /api/v0/auth/delete",
+              "RouteKey": "DELETE /api/v0/sessions/delete",
               "Target": {
                 "Fn::Join": [
                   "/",
                   [
                     "integrations",
                     {
-                      "Ref": "HttpApiIntegrationDeleteAuth"
+                      "Ref": "HttpApiIntegrationDeleteSession"
                     }
                   ]
                 ]
               }
             },
-            "DependsOn": "HttpApiIntegrationDeleteAuth"
+            "DependsOn": "HttpApiIntegrationDeleteSession"
           },
-          "HeartBeatsLambdaPermissionHttpApi": {
+          "HeartBeatSessionLambdaPermissionHttpApi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
               "FunctionName": {
                 "Fn::GetAtt": [
-                  "HeartBeatsLambdaFunction",
+                  "HeartBeatSessionLambdaFunction",
                   "Arn"
                 ]
               },
@@ -721,7 +721,7 @@
               }
             }
           },
-          "HttpApiIntegrationHeartBeats": {
+          "HttpApiIntegrationHeartBeatSession": {
             "Type": "AWS::ApiGatewayV2::Integration",
             "Properties": {
               "ApiId": {
@@ -729,32 +729,32 @@
               },
               "IntegrationType": "AWS_PROXY",
               "IntegrationUri": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"HeartBeatsLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"HeartBeatSessionLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
               },
               "PayloadFormatVersion": "2.0",
               "TimeoutInMillis": 30000
             }
           },
-          "HttpApiRouteGetApiV0Auth": {
+          "HttpApiRouteGetApiV0Sessions": {
             "Type": "AWS::ApiGatewayV2::Route",
             "Properties": {
               "ApiId": {
                 "Ref": "HttpApi"
               },
-              "RouteKey": "GET /api/v0/auth",
+              "RouteKey": "GET /api/v0/sessions",
               "Target": {
                 "Fn::Join": [
                   "/",
                   [
                     "integrations",
                     {
-                      "Ref": "HttpApiIntegrationHeartBeats"
+                      "Ref": "HttpApiIntegrationHeartBeatSession"
                     }
                   ]
                 ]
               }
             },
-            "DependsOn": "HttpApiIntegrationHeartBeats"
+            "DependsOn": "HttpApiIntegrationHeartBeatSession"
           }
         },
         "Outputs": {
@@ -763,52 +763,52 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-IoT-SES-AuthRestApi-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-IoT-SES-SessionsRestApi-dev-ServerlessDeploymentBucketName"
             }
           },
-          "CraeteAuthLambdaFunctionQualifiedArn": {
+          "CreateSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CraeteAuthLambdaVersionEa9neaOY1W38SubDNlj15f56cA20USj6rQEXd7ehEAI"
+              "Ref": "CreateSessionLambdaVersionjgz0V1pLVsvXGHFHZAdtWHzKhCVGNLKFoz4OrbUQnvM"
             },
             "Export": {
-              "Name": "sls-IoT-SES-AuthRestApi-dev-CraeteAuthLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-SessionsRestApi-dev-CreateSessionLambdaFunctionQualifiedArn"
             }
           },
-          "ReadAuthLambdaFunctionQualifiedArn": {
+          "ReadSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ReadAuthLambdaVersionVxJojRzB9rWvIwwW9hOCyS23HZ2y0HaGyotOdX7E2E"
+              "Ref": "ReadSessionLambdaVersionijn6u76nkq5RByBUUhPYfC05oSaZQLbf1H4pee1TC4"
             },
             "Export": {
-              "Name": "sls-IoT-SES-AuthRestApi-dev-ReadAuthLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-SessionsRestApi-dev-ReadSessionLambdaFunctionQualifiedArn"
             }
           },
-          "UpdateAuthLambdaFunctionQualifiedArn": {
+          "UpdateSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateAuthLambdaVersionuolvtFObGaBRqb49ipwnY7PZCTopZcYkci7HWvwSLqA"
+              "Ref": "UpdateSessionLambdaVersioncoefgPxdmo1ACmhk33Ja2cTiBGBM0wTAlcG1k0KZWM"
             },
             "Export": {
-              "Name": "sls-IoT-SES-AuthRestApi-dev-UpdateAuthLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-SessionsRestApi-dev-UpdateSessionLambdaFunctionQualifiedArn"
             }
           },
-          "DeleteAuthLambdaFunctionQualifiedArn": {
+          "DeleteSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteAuthLambdaVersion0BxCRJ1UhKJZ2PPTXO8xUhj9mt7t3ypkYNn4n1Zj8ns"
+              "Ref": "DeleteSessionLambdaVersionScnNCE9j2QgWNfexqb7XLO93UVM9zFy6FT85Fqnk"
             },
             "Export": {
-              "Name": "sls-IoT-SES-AuthRestApi-dev-DeleteAuthLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-SessionsRestApi-dev-DeleteSessionLambdaFunctionQualifiedArn"
             }
           },
-          "HeartBeatsLambdaFunctionQualifiedArn": {
+          "HeartBeatSessionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HeartBeatsLambdaVersionQfGD4vf8o3SionmAtzBrJa2vyomJQxBj5PAE7XRajk"
+              "Ref": "HeartBeatSessionLambdaVersioniTi1xs0L6QctNMzfCKUZAieFH7CyRRvMkDaRjt6xQ"
             },
             "Export": {
-              "Name": "sls-IoT-SES-AuthRestApi-dev-HeartBeatsLambdaFunctionQualifiedArn"
+              "Name": "sls-IoT-SES-SessionsRestApi-dev-HeartBeatSessionLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -817,7 +817,7 @@
               "Ref": "HttpApi"
             },
             "Export": {
-              "Name": "sls-IoT-SES-AuthRestApi-dev-HttpApiId"
+              "Name": "sls-IoT-SES-SessionsRestApi-dev-HttpApiId"
             }
           },
           "HttpApiUrl": {
@@ -842,7 +842,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-IoT-SES-AuthRestApi-dev-HttpApiUrl"
+              "Name": "sls-IoT-SES-SessionsRestApi-dev-HttpApiUrl"
             }
           }
         }
@@ -933,116 +933,116 @@
     },
     "pluginsData": {},
     "functions": {
-      "craeteAuth": {
-        "handler": "createAuth.handler",
-        "description": "lambda to create a new Authentication!",
+      "createSession": {
+        "handler": "createSession.handler",
+        "description": "lambda function to create a new session in database.",
         "events": [
           {
             "httpApi": {
-              "path": "/api/v0/auth/create",
+              "path": "/api/v0/sessions/create",
               "method": "POST"
             },
             "resolvedMethod": "POST",
-            "resolvedPath": "/api/v0/auth/create"
+            "resolvedPath": "/api/v0/sessions/create"
           }
         ],
-        "name": "IoT-SES-AuthRestApi-dev-craeteAuth",
+        "name": "IoT-SES-SessionsRestApi-dev-createSession",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CraeteAuthLambdaVersionEa9neaOY1W38SubDNlj15f56cA20USj6rQEXd7ehEAI"
+        "versionLogicalId": "CreateSessionLambdaVersionjgz0V1pLVsvXGHFHZAdtWHzKhCVGNLKFoz4OrbUQnvM"
       },
-      "readAuth": {
-        "handler": "readAuth.handler",
-        "description": "lambda to get Authentication from database!",
+      "readSession": {
+        "handler": "readSession.handler",
+        "description": "lambda function to read sessions.",
         "events": [
           {
             "httpApi": {
-              "path": "/api/v0/auth/read",
+              "path": "/api/v0/sessions/read",
               "method": "GET"
             },
             "resolvedMethod": "GET",
-            "resolvedPath": "/api/v0/auth/read"
+            "resolvedPath": "/api/v0/sessions/read"
           }
         ],
-        "name": "IoT-SES-AuthRestApi-dev-readAuth",
+        "name": "IoT-SES-SessionsRestApi-dev-readSession",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ReadAuthLambdaVersionVxJojRzB9rWvIwwW9hOCyS23HZ2y0HaGyotOdX7E2E"
+        "versionLogicalId": "ReadSessionLambdaVersionijn6u76nkq5RByBUUhPYfC05oSaZQLbf1H4pee1TC4"
       },
-      "updateAuth": {
-        "handler": "updateAuth.handler",
-        "description": "lambda to update Authentication in database!",
+      "updateSession": {
+        "handler": "updateSession.handler",
+        "description": "lambda fucntion to update existing session details.",
         "events": [
           {
             "httpApi": {
-              "path": "/api/v0/auth/update",
+              "path": "/api/v0/sessions/update",
               "method": "PUT"
             },
             "resolvedMethod": "PUT",
-            "resolvedPath": "/api/v0/auth/update"
+            "resolvedPath": "/api/v0/sessions/update"
           }
         ],
-        "name": "IoT-SES-AuthRestApi-dev-updateAuth",
+        "name": "IoT-SES-SessionsRestApi-dev-updateSession",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "UpdateAuthLambdaVersionuolvtFObGaBRqb49ipwnY7PZCTopZcYkci7HWvwSLqA"
+        "versionLogicalId": "UpdateSessionLambdaVersioncoefgPxdmo1ACmhk33Ja2cTiBGBM0wTAlcG1k0KZWM"
       },
-      "deleteAuth": {
-        "handler": "readAuth.handler",
-        "description": "lambda to delete Authentication from database!",
+      "deleteSession": {
+        "handler": "deleteSession.handler",
+        "description": "lambda function to delete an existing session.",
         "events": [
           {
             "httpApi": {
-              "path": "/api/v0/auth/delete",
+              "path": "/api/v0/sessions/delete",
               "method": "DELETE"
             },
             "resolvedMethod": "DELETE",
-            "resolvedPath": "/api/v0/auth/delete"
+            "resolvedPath": "/api/v0/sessions/delete"
           }
         ],
-        "name": "IoT-SES-AuthRestApi-dev-deleteAuth",
+        "name": "IoT-SES-SessionsRestApi-dev-deleteSession",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "DeleteAuthLambdaVersion0BxCRJ1UhKJZ2PPTXO8xUhj9mt7t3ypkYNn4n1Zj8ns"
+        "versionLogicalId": "DeleteSessionLambdaVersionScnNCE9j2QgWNfexqb7XLO93UVM9zFy6FT85Fqnk"
       },
-      "heartBeats": {
+      "heartBeatSession": {
         "handler": "index.handler",
-        "description": "lambda to ensure that everything is ok!",
+        "description": "lambda function for determining that the service is working perfectly.",
         "events": [
           {
             "httpApi": {
-              "path": "/api/v0/auth",
+              "path": "/api/v0/sessions",
               "method": "GET"
             },
             "resolvedMethod": "GET",
-            "resolvedPath": "/api/v0/auth"
+            "resolvedPath": "/api/v0/sessions"
           }
         ],
-        "name": "IoT-SES-AuthRestApi-dev-heartBeats",
+        "name": "IoT-SES-SessionsRestApi-dev-heartBeatSession",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HeartBeatsLambdaVersionQfGD4vf8o3SionmAtzBrJa2vyomJQxBj5PAE7XRajk"
+        "versionLogicalId": "HeartBeatSessionLambdaVersioniTi1xs0L6QctNMzfCKUZAieFH7CyRRvMkDaRjt6xQ"
       }
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
-      "service": "IoT-SES-AuthRestApi",
+      "service": "IoT-SES-SessionsRestApi",
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
       },
@@ -1052,10 +1052,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\auth\\.serverless\\IoT-SES-AuthRestApi.zip"
+    "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\sessions\\.serverless\\IoT-SES-SessionsRestApi.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/IoT-SES-AuthRestApi/dev/1688068695244-2023-06-29T19:58:15.244Z",
-    "artifact": "IoT-SES-AuthRestApi.zip"
+    "artifactDirectoryName": "serverless/IoT-SES-SessionsRestApi/dev/1688068825493-2023-06-29T20:00:25.493Z",
+    "artifact": "IoT-SES-SessionsRestApi.zip"
   }
 }
