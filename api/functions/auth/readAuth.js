@@ -10,6 +10,8 @@ module.exports.handler=async(event,callback,context)=>{
     const username = requestBody['USERNAME'];
     const password = requestBody['PASSWORD'];
 
+    console.log(`Username: ${username} ,Password: ${password}`);
+
     //crud operations=>(create,read ,update ,delete)
 
     //creating DB connection pool:
@@ -20,11 +22,11 @@ module.exports.handler=async(event,callback,context)=>{
         database: config.conf.db_name
       });
 
-    const query = `select * from Authentication where username=${username} and user_pass=${password};`;
+    const query = `select * from Authentication where username='${username}' and user_pass='${password}';`;
 
 
     const results = await new Promise((resolve, reject) => {
-        pool.query(query, newUser, (error, results, fields) => {
+        pool.query(query, (error, results, fields) => {
             if (error) {
                 console.error(error);
                 reject(results);

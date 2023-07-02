@@ -186,7 +186,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688080114070-2023-06-29T23:08:34.070Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688254960119-2023-07-01T23:42:40.119Z/IoT-SES-UsersRestApi.zip"
         },
         "Handler": "createUser.handler",
         "Runtime": "nodejs14.x",
@@ -212,7 +212,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688080114070-2023-06-29T23:08:34.070Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688254960119-2023-07-01T23:42:40.119Z/IoT-SES-UsersRestApi.zip"
         },
         "Handler": "readUser.handler",
         "Runtime": "nodejs14.x",
@@ -238,7 +238,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688080114070-2023-06-29T23:08:34.070Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688254960119-2023-07-01T23:42:40.119Z/IoT-SES-UsersRestApi.zip"
         },
         "Handler": "updateUser.handler",
         "Runtime": "nodejs14.x",
@@ -264,7 +264,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688080114070-2023-06-29T23:08:34.070Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688254960119-2023-07-01T23:42:40.119Z/IoT-SES-UsersRestApi.zip"
         },
         "Handler": "deleteUser.handler",
         "Runtime": "nodejs14.x",
@@ -290,7 +290,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688080114070-2023-06-29T23:08:34.070Z/IoT-SES-UsersRestApi.zip"
+          "S3Key": "serverless/IoT-SES-UsersRestApi/dev/1688254960119-2023-07-01T23:42:40.119Z/IoT-SES-UsersRestApi.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
@@ -309,58 +309,58 @@
         "HeartBeatsLogGroup"
       ]
     },
-    "CraeteUsersLambdaVersionNsDWXkWcuv6hiIKjOUgTwKFMCsSqP7Y5DkYbOeBdVa8": {
+    "CraeteUsersLambdaVersionYhTfNLicTpmHUmANUrkci2AWdGxgliF962lc8nGHk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CraeteUsersLambdaFunction"
         },
-        "CodeSha256": "Bn1CrQjruzhoN3ibW2Y6zGxY6AUJawxbt+yPSOBzI/w=",
+        "CodeSha256": "pnGn54KGU+eO7SOZNLRBPhzF5CQwb2sOJ0bEqO8Jmbc=",
         "Description": "lambda to create a new user!"
       }
     },
-    "ReadUsersLambdaVersioncZXn5X3n7p58KhItafy8wMGQqNWWKS6roKq4cGiDlLI": {
+    "ReadUsersLambdaVersionTeIEf3zX9dj3pXTTk1BmLU0KGz0FeBXCNFm93AumiU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ReadUsersLambdaFunction"
         },
-        "CodeSha256": "Bn1CrQjruzhoN3ibW2Y6zGxY6AUJawxbt+yPSOBzI/w=",
+        "CodeSha256": "pnGn54KGU+eO7SOZNLRBPhzF5CQwb2sOJ0bEqO8Jmbc=",
         "Description": "lambda to get all usera from database!"
       }
     },
-    "UpdateUsersLambdaVersion6YqM0EYxr4i73GgLw7aGcXCj0mKo5zoAkCTlnYEs": {
+    "UpdateUsersLambdaVersionzgGOK77xOHpwwDagpNbqAHzWDUYfn7HuuilvVjdLf0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateUsersLambdaFunction"
         },
-        "CodeSha256": "Bn1CrQjruzhoN3ibW2Y6zGxY6AUJawxbt+yPSOBzI/w=",
+        "CodeSha256": "pnGn54KGU+eO7SOZNLRBPhzF5CQwb2sOJ0bEqO8Jmbc=",
         "Description": "lambda function to update an existing user in database."
       }
     },
-    "DeleteUsersLambdaVersionZP37mYMK8OeCYl5JOHAjHzPvDetruGQe0lLdW2PxnO4": {
+    "DeleteUsersLambdaVersionVLEHYQSgkUnQVb1fnBXjCogui7ksaytzy83o9uWPqyE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteUsersLambdaFunction"
         },
-        "CodeSha256": "Bn1CrQjruzhoN3ibW2Y6zGxY6AUJawxbt+yPSOBzI/w=",
+        "CodeSha256": "pnGn54KGU+eO7SOZNLRBPhzF5CQwb2sOJ0bEqO8Jmbc=",
         "Description": "lambda function to delete an existing user from the database."
       }
     },
-    "HeartBeatsLambdaVersion1Snt03UNrtTkzmw58pmtIXUhgm4JJOZrVU8ivatNAc": {
+    "HeartBeatsLambdaVersionVIye21dH5raBWijZ0sKxChs0OAykucHic1C0A0UIvm4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HeartBeatsLambdaFunction"
         },
-        "CodeSha256": "Bn1CrQjruzhoN3ibW2Y6zGxY6AUJawxbt+yPSOBzI/w=",
+        "CodeSha256": "pnGn54KGU+eO7SOZNLRBPhzF5CQwb2sOJ0bEqO8Jmbc=",
         "Description": "lambda to ensure that everything is ok!"
       }
     },
@@ -772,7 +772,7 @@
     "CraeteUsersLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CraeteUsersLambdaVersionNsDWXkWcuv6hiIKjOUgTwKFMCsSqP7Y5DkYbOeBdVa8"
+        "Ref": "CraeteUsersLambdaVersionYhTfNLicTpmHUmANUrkci2AWdGxgliF962lc8nGHk"
       },
       "Export": {
         "Name": "sls-IoT-SES-UsersRestApi-dev-CraeteUsersLambdaFunctionQualifiedArn"
@@ -781,7 +781,7 @@
     "ReadUsersLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ReadUsersLambdaVersioncZXn5X3n7p58KhItafy8wMGQqNWWKS6roKq4cGiDlLI"
+        "Ref": "ReadUsersLambdaVersionTeIEf3zX9dj3pXTTk1BmLU0KGz0FeBXCNFm93AumiU"
       },
       "Export": {
         "Name": "sls-IoT-SES-UsersRestApi-dev-ReadUsersLambdaFunctionQualifiedArn"
@@ -790,7 +790,7 @@
     "UpdateUsersLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateUsersLambdaVersion6YqM0EYxr4i73GgLw7aGcXCj0mKo5zoAkCTlnYEs"
+        "Ref": "UpdateUsersLambdaVersionzgGOK77xOHpwwDagpNbqAHzWDUYfn7HuuilvVjdLf0"
       },
       "Export": {
         "Name": "sls-IoT-SES-UsersRestApi-dev-UpdateUsersLambdaFunctionQualifiedArn"
@@ -799,7 +799,7 @@
     "DeleteUsersLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteUsersLambdaVersionZP37mYMK8OeCYl5JOHAjHzPvDetruGQe0lLdW2PxnO4"
+        "Ref": "DeleteUsersLambdaVersionVLEHYQSgkUnQVb1fnBXjCogui7ksaytzy83o9uWPqyE"
       },
       "Export": {
         "Name": "sls-IoT-SES-UsersRestApi-dev-DeleteUsersLambdaFunctionQualifiedArn"
@@ -808,7 +808,7 @@
     "HeartBeatsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HeartBeatsLambdaVersion1Snt03UNrtTkzmw58pmtIXUhgm4JJOZrVU8ivatNAc"
+        "Ref": "HeartBeatsLambdaVersionVIye21dH5raBWijZ0sKxChs0OAykucHic1C0A0UIvm4"
       },
       "Export": {
         "Name": "sls-IoT-SES-UsersRestApi-dev-HeartBeatsLambdaFunctionQualifiedArn"

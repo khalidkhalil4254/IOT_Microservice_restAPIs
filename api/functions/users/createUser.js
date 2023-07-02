@@ -7,11 +7,14 @@ const mysql = require("mysql");
 module.exports.handler=async(event,callback,context)=>{
     //extracting user information from the http-request-body sent from DesktopApp:
     const requestBody = JSON.parse(event.body);
-    const rfid = requestBody['RFID'];
-    const username = requestBody['USERNAME'];
-    const password = requestBody['PASSWORD'];
-    const role = requestBody['ROLE'];
     
+    const rfid = requestBody['RFID'];
+    const email = requestBody['EMAIL'];
+    const role = requestBody['ROLE'];
+    const pincode = requestBody['PINCODE'];
+    const phone = requestBody['PHONE'];
+    
+    console.log(`(RFID ,email ,pincode ,usertype ,phone):('${rfid}', '${email}', '${pincode}', '${role}' ,'${phone}')`);
 
     //crud operations=>(create,read ,update ,delete)
 
@@ -23,11 +26,9 @@ module.exports.handler=async(event,callback,context)=>{
         database: config.conf.db_name
       });
 
-    const query = `INSERT INTO User(RFID ,username ,userpass ,usertype) VALUES ('${rfid}', '${username}', '${password}', '${role}');`;
+    const query = `INSERT INTO User(RFID ,email ,pincode ,usertype ,phone) VALUES ('${rfid}', '${email}', '${pincode}', '${role}' ,'${phone}');`;
     const newUser = {
         rfid ,
-        username ,
-        password ,
         role 
     };
 

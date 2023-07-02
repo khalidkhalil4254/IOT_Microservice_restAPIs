@@ -174,7 +174,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688080126323-2023-06-29T23:08:46.323Z/IoT-SES-LogsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688255018479-2023-07-01T23:43:38.479Z/IoT-SES-LogsRestApi.zip"
         },
         "Handler": "createLog.handler",
         "Runtime": "nodejs14.x",
@@ -200,7 +200,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688080126323-2023-06-29T23:08:46.323Z/IoT-SES-LogsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688255018479-2023-07-01T23:43:38.479Z/IoT-SES-LogsRestApi.zip"
         },
         "Handler": "readLog.handler",
         "Runtime": "nodejs14.x",
@@ -226,7 +226,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688080126323-2023-06-29T23:08:46.323Z/IoT-SES-LogsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688255018479-2023-07-01T23:43:38.479Z/IoT-SES-LogsRestApi.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
