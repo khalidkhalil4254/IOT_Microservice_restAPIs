@@ -6,14 +6,12 @@ const mysql = require("mysql");
 
 module.exports.handler=async(event,callback,context)=>{
     //extracting user information from the http-request-body sent from DesktopApp:
-    const requestBody = JSON.parse(event.body);
-    const username = requestBody['USERNAME'];
-    const password = requestBody['PASSWORD'];
-    const phone = requestBody['PHONE'];
-    const role = requestBody['ROLE'];
+        // Get the value of the "id" query parameter
+        
+    const username = event.queryStringParameters.USERNAME;
+    const password = event.queryStringParameters.PASSWORD;
 
-
-    console.log(`username: ${username}, pass: ${password}, phone: ${phone}, role: ${role}`)
+    console.log(`Username: ${username} ,Password: ${password}`);
 
     //crud operations=>(create,read ,update ,delete)
 
@@ -25,21 +23,15 @@ module.exports.handler=async(event,callback,context)=>{
         database: config.conf.db_name
       });
 
-    const query = `INSERT INTO Authentication(username ,user_pass , phone ,role_ ) VALUES ('${username}', '${password}','${phone}' ,'${role}');`;
-    const newUser = {
-        username ,
-        password ,
-        role
-    };
-
+    const query = `select * from Authentication where username='${username}' and user_pass='${password}';`;
 
     const results = await new Promise((resolve, reject) => {
-        pool.query(query, newUser, (error, results, fields) => {
+        pool.query(query, (error, results, fields) => {
             if (error) {
                 console.error(error);
                 reject(results);
             }else{
-                console.log('New user added to database');
+                console.log('A user found!');
                 resolve(results);
             }
     
@@ -55,7 +47,7 @@ module.exports.handler=async(event,callback,context)=>{
         const json_results = JSON.stringify(results);
         console.log(json_results);
         // Return the results as JSON as (200) if found!
-        return response._201;
+        return response._200;
     }
     else{
         //console.log(`FAIL=>Results:${results}`);
@@ -63,7 +55,7 @@ module.exports.handler=async(event,callback,context)=>{
         const json_results = JSON.stringify(results);
         console.log(json_results);
         // Return the results as JSON as (404) if not found!
-        return response._401;
+        return response._404;
     }
 
 

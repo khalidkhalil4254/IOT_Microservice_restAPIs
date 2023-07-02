@@ -83,6 +83,12 @@
         "LogGroupName": "/aws/lambda/IoT-SES-LogsRestApi-dev-readLogs"
       }
     },
+    "DeleteLogsLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/IoT-SES-LogsRestApi-dev-deleteLogs"
+      }
+    },
     "HeartBeatsLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
@@ -174,7 +180,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688255018479-2023-07-01T23:43:38.479Z/IoT-SES-LogsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688326133704-2023-07-02T19:28:53.704Z/IoT-SES-LogsRestApi.zip"
         },
         "Handler": "createLog.handler",
         "Runtime": "nodejs14.x",
@@ -200,7 +206,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688255018479-2023-07-01T23:43:38.479Z/IoT-SES-LogsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688326133704-2023-07-02T19:28:53.704Z/IoT-SES-LogsRestApi.zip"
         },
         "Handler": "readLog.handler",
         "Runtime": "nodejs14.x",
@@ -219,6 +225,32 @@
         "ReadLogsLogGroup"
       ]
     },
+    "DeleteLogsLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688326133704-2023-07-02T19:28:53.704Z/IoT-SES-LogsRestApi.zip"
+        },
+        "Handler": "deleteLog.handler",
+        "Runtime": "nodejs14.x",
+        "FunctionName": "IoT-SES-LogsRestApi-dev-deleteLogs",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Description": "lambda to delete existing log information!",
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "DeleteLogsLogGroup"
+      ]
+    },
     "HeartBeatsLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -226,7 +258,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688255018479-2023-07-01T23:43:38.479Z/IoT-SES-LogsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-LogsRestApi/dev/1688326133704-2023-07-02T19:28:53.704Z/IoT-SES-LogsRestApi.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
@@ -265,6 +297,17 @@
         },
         "CodeSha256": "Lt5/fffnBYhZuOEX4DLf46uJ5M9gkHcVN/4cqLZbubo=",
         "Description": "lambda to read a log information with its timestamp!"
+      }
+    },
+    "DeleteLogsLambdaVersionpC3NWFOtxO1qjGLNIjHILFVPQ6tAVs1nojaqdqLDQ": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "DeleteLogsLambdaFunction"
+        },
+        "CodeSha256": "Lt5/fffnBYhZuOEX4DLf46uJ5M9gkHcVN/4cqLZbubo=",
+        "Description": "lambda to delete existing log information!"
       }
     },
     "HeartBeatsLambdaVersion06CcNOyZWaTgojAbpewscdrX6mURWRB6oiqNXdlqlY": {
@@ -448,6 +491,81 @@
       },
       "DependsOn": "HttpApiIntegrationReadLogs"
     },
+    "DeleteLogsLambdaPermissionHttpApi": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "DeleteLogsLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "HttpApi"
+              },
+              "/*"
+            ]
+          ]
+        }
+      }
+    },
+    "HttpApiIntegrationDeleteLogs": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": [
+            "DeleteLogsLambdaFunction",
+            "Arn"
+          ]
+        },
+        "PayloadFormatVersion": "2.0",
+        "TimeoutInMillis": 30000
+      }
+    },
+    "HttpApiRouteDeleteApiV0LogsDelete": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "RouteKey": "DELETE /api/v0/logs/delete",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "HttpApiIntegrationDeleteLogs"
+              }
+            ]
+          ]
+        }
+      },
+      "DependsOn": "HttpApiIntegrationDeleteLogs"
+    },
     "HeartBeatsLambdaPermissionHttpApi": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
@@ -549,6 +667,15 @@
       },
       "Export": {
         "Name": "sls-IoT-SES-LogsRestApi-dev-ReadLogsLambdaFunctionQualifiedArn"
+      }
+    },
+    "DeleteLogsLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "DeleteLogsLambdaVersionpC3NWFOtxO1qjGLNIjHILFVPQ6tAVs1nojaqdqLDQ"
+      },
+      "Export": {
+        "Name": "sls-IoT-SES-LogsRestApi-dev-DeleteLogsLambdaFunctionQualifiedArn"
       }
     },
     "HeartBeatsLambdaFunctionQualifiedArn": {

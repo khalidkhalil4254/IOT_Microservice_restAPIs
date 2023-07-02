@@ -7,13 +7,13 @@ const mysql = require("mysql");
 module.exports.handler=async(event,callback,context)=>{
     //extracting user information from the http-request-body sent from DesktopApp:
     const requestBody = JSON.parse(event.body);
+    const id = requestBody['ID'];
     const username = requestBody['USERNAME'];
     const password = requestBody['PASSWORD'];
-    const phone = requestBody['PHONE'];
     const role = requestBody['ROLE'];
 
 
-    console.log(`username: ${username}, pass: ${password}, phone: ${phone}, role: ${role}`)
+    console.log(`username: ${username}, pass: ${password}, phone:'', role: ${role}`)
 
     //crud operations=>(create,read ,update ,delete)
 
@@ -25,8 +25,8 @@ module.exports.handler=async(event,callback,context)=>{
         database: config.conf.db_name
       });
 
-    const query = `INSERT INTO Authentication(username ,user_pass , phone ,role_ ) VALUES ('${username}', '${password}','${phone}' ,'${role}');`;
-    const newUser = {
+    const query = `INSERT INTO Authentication(ID, username ,user_pass , phone ,role_ ) VALUES ('${id}', '${username}','${password}' ,'','${role}');`;
+    const newUser = { 
         username ,
         password ,
         role

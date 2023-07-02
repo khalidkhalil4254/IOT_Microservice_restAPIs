@@ -77,10 +77,22 @@
         "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-craeteAuth"
       }
     },
+    "CreateAuthMobileLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-createAuthMobile"
+      }
+    },
     "ReadAuthLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
         "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-readAuth"
+      }
+    },
+    "ReadAuthMobileLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-readAuthMobile"
       }
     },
     "UpdateAuthLogGroup": {
@@ -186,7 +198,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688254944779-2023-07-01T23:42:24.779Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688326048553-2023-07-02T19:27:28.553Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "createAuth.handler",
         "Runtime": "nodejs14.x",
@@ -205,6 +217,32 @@
         "CraeteAuthLogGroup"
       ]
     },
+    "CreateAuthMobileLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688326048553-2023-07-02T19:27:28.553Z/IoT-SES-AuthRestApi.zip"
+        },
+        "Handler": "createAuthMobile.handler",
+        "Runtime": "nodejs14.x",
+        "FunctionName": "IoT-SES-AuthRestApi-dev-createAuthMobile",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Description": "lambda to create a new Authentication using mobile application!",
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "CreateAuthMobileLogGroup"
+      ]
+    },
     "ReadAuthLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -212,7 +250,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688254944779-2023-07-01T23:42:24.779Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688326048553-2023-07-02T19:27:28.553Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "readAuth.handler",
         "Runtime": "nodejs14.x",
@@ -231,6 +269,32 @@
         "ReadAuthLogGroup"
       ]
     },
+    "ReadAuthMobileLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688326048553-2023-07-02T19:27:28.553Z/IoT-SES-AuthRestApi.zip"
+        },
+        "Handler": "readAuthMobile.handler",
+        "Runtime": "nodejs14.x",
+        "FunctionName": "IoT-SES-AuthRestApi-dev-readAuthMobile",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Description": "lambda to get Authentication from database optimized for mobile application!",
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "ReadAuthMobileLogGroup"
+      ]
+    },
     "UpdateAuthLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -238,7 +302,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688254944779-2023-07-01T23:42:24.779Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688326048553-2023-07-02T19:27:28.553Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "updateAuth.handler",
         "Runtime": "nodejs14.x",
@@ -264,7 +328,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688254944779-2023-07-01T23:42:24.779Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688326048553-2023-07-02T19:27:28.553Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "readAuth.handler",
         "Runtime": "nodejs14.x",
@@ -290,7 +354,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688254944779-2023-07-01T23:42:24.779Z/IoT-SES-AuthRestApi.zip"
+          "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688326048553-2023-07-02T19:27:28.553Z/IoT-SES-AuthRestApi.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",
@@ -309,58 +373,80 @@
         "HeartBeatsLogGroup"
       ]
     },
-    "CraeteAuthLambdaVersionwezpgtMnhxRmrNvhXxGYowdD2FyMNeDQ33Rn3potZg": {
+    "CraeteAuthLambdaVersionq35MxIuKTzkXeUYnYv4htoBFNN298E1vz46Bq4yhk4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CraeteAuthLambdaFunction"
         },
-        "CodeSha256": "wMVqZUD4wow1RX8+/rZssqXBfiEWzLNkAyiQQyI9zPU=",
+        "CodeSha256": "gdl8CDCOq9RMe3ChpcGxnnKelhZyvrSPeSsbnoEGpXc=",
         "Description": "lambda to create a new Authentication!"
       }
     },
-    "ReadAuthLambdaVersionsm8RFwEA2bINCXV0EeKzlkPQnCIILkyZ89kkrC8fJuI": {
+    "CreateAuthMobileLambdaVersionlxr0Dn2L0qmuUJLrLJJyiY4SuWc2cBQ1mUvSleGcBRs": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "CreateAuthMobileLambdaFunction"
+        },
+        "CodeSha256": "gdl8CDCOq9RMe3ChpcGxnnKelhZyvrSPeSsbnoEGpXc=",
+        "Description": "lambda to create a new Authentication using mobile application!"
+      }
+    },
+    "ReadAuthLambdaVersionxNGCx4XnoiOZvSRPGqN2M0pnTZQ2VQE80SNqYmQys": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ReadAuthLambdaFunction"
         },
-        "CodeSha256": "wMVqZUD4wow1RX8+/rZssqXBfiEWzLNkAyiQQyI9zPU=",
+        "CodeSha256": "gdl8CDCOq9RMe3ChpcGxnnKelhZyvrSPeSsbnoEGpXc=",
         "Description": "lambda to get Authentication from database!"
       }
     },
-    "UpdateAuthLambdaVersionwFPdqTzLHngM57EXFq81BjnxdDPm4WwnLP1mtNpfw8": {
+    "ReadAuthMobileLambdaVersionAFdObDK16Rpx8u1bxVrcp7cm0kftEjzUt1v4OGDHHCE": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ReadAuthMobileLambdaFunction"
+        },
+        "CodeSha256": "gdl8CDCOq9RMe3ChpcGxnnKelhZyvrSPeSsbnoEGpXc=",
+        "Description": "lambda to get Authentication from database optimized for mobile application!"
+      }
+    },
+    "UpdateAuthLambdaVersionKRXRRLdqAAcaBegrazvSnMa6gWO1bjVb4Ar0zCVqA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateAuthLambdaFunction"
         },
-        "CodeSha256": "wMVqZUD4wow1RX8+/rZssqXBfiEWzLNkAyiQQyI9zPU=",
+        "CodeSha256": "gdl8CDCOq9RMe3ChpcGxnnKelhZyvrSPeSsbnoEGpXc=",
         "Description": "lambda to update Authentication in database!"
       }
     },
-    "DeleteAuthLambdaVersionqZdp7RplJHkNIOqVt5FHgFRRyJ8JoZVbc0jrQvRLFpc": {
+    "DeleteAuthLambdaVersionozuOI5kL8OOY66qvxpCwKMeLvOxHXpz5Z4rcRPKlk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteAuthLambdaFunction"
         },
-        "CodeSha256": "wMVqZUD4wow1RX8+/rZssqXBfiEWzLNkAyiQQyI9zPU=",
+        "CodeSha256": "gdl8CDCOq9RMe3ChpcGxnnKelhZyvrSPeSsbnoEGpXc=",
         "Description": "lambda to delete Authentication from database!"
       }
     },
-    "HeartBeatsLambdaVersionDRh3OAmB8kcbu2qEF3ZZzOvxsYVPfIeVdSpRclEdM": {
+    "HeartBeatsLambdaVersion1N5vc0ft4be6F5RcvtRchxuTuQ7B38EpZSQFKfKPg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HeartBeatsLambdaFunction"
         },
-        "CodeSha256": "wMVqZUD4wow1RX8+/rZssqXBfiEWzLNkAyiQQyI9zPU=",
+        "CodeSha256": "gdl8CDCOq9RMe3ChpcGxnnKelhZyvrSPeSsbnoEGpXc=",
         "Description": "lambda to ensure that everything is ok!"
       }
     },
@@ -459,6 +545,81 @@
       },
       "DependsOn": "HttpApiIntegrationCraeteAuth"
     },
+    "CreateAuthMobileLambdaPermissionHttpApi": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CreateAuthMobileLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "HttpApi"
+              },
+              "/*"
+            ]
+          ]
+        }
+      }
+    },
+    "HttpApiIntegrationCreateAuthMobile": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": [
+            "CreateAuthMobileLambdaFunction",
+            "Arn"
+          ]
+        },
+        "PayloadFormatVersion": "2.0",
+        "TimeoutInMillis": 30000
+      }
+    },
+    "HttpApiRoutePostApiV1AuthCreate": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "RouteKey": "POST /api/v1/auth/create",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "HttpApiIntegrationCreateAuthMobile"
+              }
+            ]
+          ]
+        }
+      },
+      "DependsOn": "HttpApiIntegrationCreateAuthMobile"
+    },
     "ReadAuthLambdaPermissionHttpApi": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
@@ -533,6 +694,81 @@
         }
       },
       "DependsOn": "HttpApiIntegrationReadAuth"
+    },
+    "ReadAuthMobileLambdaPermissionHttpApi": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "ReadAuthMobileLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "HttpApi"
+              },
+              "/*"
+            ]
+          ]
+        }
+      }
+    },
+    "HttpApiIntegrationReadAuthMobile": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": [
+            "ReadAuthMobileLambdaFunction",
+            "Arn"
+          ]
+        },
+        "PayloadFormatVersion": "2.0",
+        "TimeoutInMillis": 30000
+      }
+    },
+    "HttpApiRouteGetApiV1AuthRead": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "RouteKey": "GET /api/v1/auth/read",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "HttpApiIntegrationReadAuthMobile"
+              }
+            ]
+          ]
+        }
+      },
+      "DependsOn": "HttpApiIntegrationReadAuthMobile"
     },
     "UpdateAuthLambdaPermissionHttpApi": {
       "Type": "AWS::Lambda::Permission",
@@ -772,25 +1008,43 @@
     "CraeteAuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CraeteAuthLambdaVersionwezpgtMnhxRmrNvhXxGYowdD2FyMNeDQ33Rn3potZg"
+        "Ref": "CraeteAuthLambdaVersionq35MxIuKTzkXeUYnYv4htoBFNN298E1vz46Bq4yhk4"
       },
       "Export": {
         "Name": "sls-IoT-SES-AuthRestApi-dev-CraeteAuthLambdaFunctionQualifiedArn"
       }
     },
+    "CreateAuthMobileLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "CreateAuthMobileLambdaVersionlxr0Dn2L0qmuUJLrLJJyiY4SuWc2cBQ1mUvSleGcBRs"
+      },
+      "Export": {
+        "Name": "sls-IoT-SES-AuthRestApi-dev-CreateAuthMobileLambdaFunctionQualifiedArn"
+      }
+    },
     "ReadAuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ReadAuthLambdaVersionsm8RFwEA2bINCXV0EeKzlkPQnCIILkyZ89kkrC8fJuI"
+        "Ref": "ReadAuthLambdaVersionxNGCx4XnoiOZvSRPGqN2M0pnTZQ2VQE80SNqYmQys"
       },
       "Export": {
         "Name": "sls-IoT-SES-AuthRestApi-dev-ReadAuthLambdaFunctionQualifiedArn"
       }
     },
+    "ReadAuthMobileLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "ReadAuthMobileLambdaVersionAFdObDK16Rpx8u1bxVrcp7cm0kftEjzUt1v4OGDHHCE"
+      },
+      "Export": {
+        "Name": "sls-IoT-SES-AuthRestApi-dev-ReadAuthMobileLambdaFunctionQualifiedArn"
+      }
+    },
     "UpdateAuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateAuthLambdaVersionwFPdqTzLHngM57EXFq81BjnxdDPm4WwnLP1mtNpfw8"
+        "Ref": "UpdateAuthLambdaVersionKRXRRLdqAAcaBegrazvSnMa6gWO1bjVb4Ar0zCVqA"
       },
       "Export": {
         "Name": "sls-IoT-SES-AuthRestApi-dev-UpdateAuthLambdaFunctionQualifiedArn"
@@ -799,7 +1053,7 @@
     "DeleteAuthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteAuthLambdaVersionqZdp7RplJHkNIOqVt5FHgFRRyJ8JoZVbc0jrQvRLFpc"
+        "Ref": "DeleteAuthLambdaVersionozuOI5kL8OOY66qvxpCwKMeLvOxHXpz5Z4rcRPKlk"
       },
       "Export": {
         "Name": "sls-IoT-SES-AuthRestApi-dev-DeleteAuthLambdaFunctionQualifiedArn"
@@ -808,7 +1062,7 @@
     "HeartBeatsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HeartBeatsLambdaVersionDRh3OAmB8kcbu2qEF3ZZzOvxsYVPfIeVdSpRclEdM"
+        "Ref": "HeartBeatsLambdaVersion1N5vc0ft4be6F5RcvtRchxuTuQ7B38EpZSQFKfKPg"
       },
       "Export": {
         "Name": "sls-IoT-SES-AuthRestApi-dev-HeartBeatsLambdaFunctionQualifiedArn"

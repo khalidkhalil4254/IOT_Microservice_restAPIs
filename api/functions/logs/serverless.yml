@@ -30,7 +30,17 @@ functions:
       - httpApi: 
           path: /api/v0/logs/read
           method: GET
+
       
+  deleteLogs:
+      handler: deleteLog.handler
+      description: lambda to delete existing log information!
+      events:
+      - httpApi: 
+          path: /api/v0/logs/delete
+          method: DELETE
+
+
   #---------------------------------restApi-safety---------------------------------
 
   #An endpoint to ensure that the restApi is working fine:

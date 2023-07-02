@@ -10,3 +10,4 @@ functions:
       - http:
           path: /api/v0/emails/send
           method: POST
+

@@ -22,6 +22,15 @@ functions:
       - httpApi: 
           path: /api/v0/auth/create
           method: POST
+#createAuthMobile
+
+  createAuthMobile:
+      handler: createAuthMobile.handler
+      description: lambda to create a new Authentication using mobile application!
+      events:
+      - httpApi: 
+          path: /api/v1/auth/create
+          method: POST
 
 
   readAuth:
@@ -31,6 +40,16 @@ functions:
       - httpApi: 
           path: /api/v0/auth/read
           method: GET
+
+
+  readAuthMobile:
+    handler: readAuthMobile.handler
+    description: lambda to get Authentication from database optimized for mobile application!
+    events:
+      - httpApi: 
+          path: /api/v1/auth/read
+          method: GET
+  
 
   updateAuth:
     handler: updateAuth.handler
@@ -47,6 +66,7 @@ functions:
       - httpApi: 
           path: /api/v0/auth/delete
           method: DELETE
+          
   
   #---------------------------------restApi-safety---------------------------------
 
