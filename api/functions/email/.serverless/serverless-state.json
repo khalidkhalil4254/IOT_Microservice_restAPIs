@@ -174,7 +174,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-EmailsRestApi/dev/1688326161238-2023-07-02T19:29:21.238Z/IoT-SES-EmailsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-EmailsRestApi/dev/1688403420519-2023-07-03T16:57:00.519Z/IoT-SES-EmailsRestApi.zip"
               },
               "Handler": "createEmail.handler",
               "Runtime": "nodejs14.x",
@@ -311,7 +311,7 @@
               "MailerLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1688326157859": {
+          "ApiGatewayDeployment1688403417416": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -529,7 +529,7 @@
     "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\email\\.serverless\\IoT-SES-EmailsRestApi.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/IoT-SES-EmailsRestApi/dev/1688326161238-2023-07-02T19:29:21.238Z",
+    "artifactDirectoryName": "serverless/IoT-SES-EmailsRestApi/dev/1688403420519-2023-07-03T16:57:00.519Z",
     "artifact": "IoT-SES-EmailsRestApi.zip"
   }
 }

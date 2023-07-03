@@ -186,7 +186,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688326146772-2023-07-02T19:29:06.772Z/IoT-SES-SessionsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688403397474-2023-07-03T16:56:37.474Z/IoT-SES-SessionsRestApi.zip"
         },
         "Handler": "createSession.handler",
         "Runtime": "nodejs14.x",
@@ -212,7 +212,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688326146772-2023-07-02T19:29:06.772Z/IoT-SES-SessionsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688403397474-2023-07-03T16:56:37.474Z/IoT-SES-SessionsRestApi.zip"
         },
         "Handler": "readSession.handler",
         "Runtime": "nodejs14.x",
@@ -238,7 +238,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688326146772-2023-07-02T19:29:06.772Z/IoT-SES-SessionsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688403397474-2023-07-03T16:56:37.474Z/IoT-SES-SessionsRestApi.zip"
         },
         "Handler": "updateSession.handler",
         "Runtime": "nodejs14.x",
@@ -264,7 +264,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688326146772-2023-07-02T19:29:06.772Z/IoT-SES-SessionsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688403397474-2023-07-03T16:56:37.474Z/IoT-SES-SessionsRestApi.zip"
         },
         "Handler": "deleteSession.handler",
         "Runtime": "nodejs14.x",
@@ -290,7 +290,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688326146772-2023-07-02T19:29:06.772Z/IoT-SES-SessionsRestApi.zip"
+          "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688403397474-2023-07-03T16:56:37.474Z/IoT-SES-SessionsRestApi.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs14.x",

@@ -51,6 +51,25 @@ functions:
           method: GET
   
 
+#getIdByUserAndPss:
+  getIdByUserAndPassword:
+    handler: getIdByUserAndPss.handler
+    description: lambda to get Authentication ID by user & password from database optimized for mobile application!
+    events:
+      - httpApi: 
+          path: /api/v1/auth/getIdByUserAndPassword
+          method: GET
+
+#getIdByEmail:
+  getIdByEmail:
+    handler: getIdByEmail.handler
+    description: lambda to get Authentication ID by EMAIL for generating QRCODE in mobile application!
+    events:
+      - httpApi: 
+          path: /api/v1/auth/getIdByEmail
+          method: GET
+
+
   updateAuth:
     handler: updateAuth.handler
     description: lambda to update Authentication in database!
