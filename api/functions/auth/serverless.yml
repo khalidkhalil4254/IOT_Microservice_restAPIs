@@ -49,7 +49,14 @@ functions:
       - httpApi: 
           path: /api/v1/auth/read
           method: GET
-  
+  #getAuthById:
+  getAuthById:
+    handler: getAuthById.handler
+    description: lambda function to get authentication by ID for QRCODE module!
+    events:
+      - httpApi:
+          path: /api/v0/auth/getAuthById
+          method: GET
 
 #getIdByUserAndPss:
   getIdByUserAndPassword:

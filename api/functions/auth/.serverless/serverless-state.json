@@ -107,6 +107,12 @@
               "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-readAuthMobile"
             }
           },
+          "GetAuthByIdLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/IoT-SES-AuthRestApi-dev-getAuthById"
+            }
+          },
           "GetIdByUserAndPasswordLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
@@ -222,7 +228,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "createAuth.handler",
               "Runtime": "nodejs14.x",
@@ -248,7 +254,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "createAuthMobile.handler",
               "Runtime": "nodejs14.x",
@@ -274,7 +280,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "readAuth.handler",
               "Runtime": "nodejs14.x",
@@ -300,7 +306,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "readAuthMobile.handler",
               "Runtime": "nodejs14.x",
@@ -319,6 +325,32 @@
               "ReadAuthMobileLogGroup"
             ]
           },
+          "GetAuthByIdLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
+              },
+              "Handler": "getAuthById.handler",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "IoT-SES-AuthRestApi-dev-getAuthById",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Description": "lambda function to get authentication by ID for QRCODE module!",
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "GetAuthByIdLogGroup"
+            ]
+          },
           "GetIdByUserAndPasswordLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
@@ -326,7 +358,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "getIdByUserAndPss.handler",
               "Runtime": "nodejs14.x",
@@ -352,7 +384,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "getIdByEmail.handler",
               "Runtime": "nodejs14.x",
@@ -378,7 +410,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "updateAuth.handler",
               "Runtime": "nodejs14.x",
@@ -404,7 +436,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "readAuth.handler",
               "Runtime": "nodejs14.x",
@@ -430,7 +462,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z/IoT-SES-AuthRestApi.zip"
+                "S3Key": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z/IoT-SES-AuthRestApi.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs14.x",
@@ -449,102 +481,113 @@
               "HeartBeatsLogGroup"
             ]
           },
-          "CraeteAuthLambdaVersioniqM21i8Up4CpDjF7jC5K9RMXaoy9WEgM39dc7O0CT0": {
+          "CraeteAuthLambdaVersion7AFS6X9FezCLrQwpqNX923bIlWIfe0W6GOkMGVTVo": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CraeteAuthLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to create a new Authentication!"
             }
           },
-          "CreateAuthMobileLambdaVersionulIweprwaIwIC5kUFTTzgG4Dgr8jOpZIPeA2rquIsI": {
+          "CreateAuthMobileLambdaVersion9KO8h5rT1YrksJAG17h5pIZdBFfsIlvvBleyVNAw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateAuthMobileLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to create a new Authentication using mobile application!"
             }
           },
-          "ReadAuthLambdaVersionjTS4VILbwrYxS9ZHRyL4PuqBMcpQPTxjjJSpwJB0": {
+          "ReadAuthLambdaVersionfQhf0dEP1SVLwgaa552FrFdiP7ItReUmpTcDh4o3EA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ReadAuthLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to get Authentication from database!"
             }
           },
-          "ReadAuthMobileLambdaVersionyX1wmqMBaYTMucwlTLuxDDxkG10va9lqRWxw5kvgM": {
+          "ReadAuthMobileLambdaVersionONaDAZd0RKHw1DBSsBNjdwqI5MUthjvwpwEdzwrY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ReadAuthMobileLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to get Authentication from database optimized for mobile application!"
             }
           },
-          "GetIdByUserAndPasswordLambdaVersionK3OVNdVPzeZNXm2YuCf6PnPkFh2kCt6dNq6Dt8U4w": {
+          "GetAuthByIdLambdaVersionvz0w2HS8ByXphQxxQqUd9SDMSHd1yk60LhnKPlUaw": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GetAuthByIdLambdaFunction"
+              },
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
+              "Description": "lambda function to get authentication by ID for QRCODE module!"
+            }
+          },
+          "GetIdByUserAndPasswordLambdaVersionSlS1q2LFPphVhCW45ILSWWwnQXRcPxc0y91K7NuLU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetIdByUserAndPasswordLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to get Authentication ID by user & password from database optimized for mobile application!"
             }
           },
-          "GetIdByEmailLambdaVersionagpy3L8voEqpITyTAD4ATfEo2FbxFZDi0cHAbUu1L60": {
+          "GetIdByEmailLambdaVersionagD4dORgnw5L6TS7mFFPPcztrNJRpzwI6Rxro12hKY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetIdByEmailLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to get Authentication ID by EMAIL for generating QRCODE in mobile application!"
             }
           },
-          "UpdateAuthLambdaVersionFpNBreDOAvl7uzE1DI7cR9fpa1OoZFsq506y0bwkXvI": {
+          "UpdateAuthLambdaVersionkJwlzoBVQRHwbpvx6HVtG51D6EWC8dtqa47CU7CsJk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateAuthLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to update Authentication in database!"
             }
           },
-          "DeleteAuthLambdaVersionML8DhJg0xwbYZ3u9SeK1Bw3UI2rqDHr3mFBwu3uuU": {
+          "DeleteAuthLambdaVersionGiQq94L9ZqYWIEXDNg4aRMrWq2KV0XZwZkE950BZ5c": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteAuthLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to delete Authentication from database!"
             }
           },
-          "HeartBeatsLambdaVersionCXhrpv7lmnpGsgkMkCNGeVQWOmi7qw98fe4DchRt2Y": {
+          "HeartBeatsLambdaVersionSXVHLwdE1bze3NK3JUDFRfMsnoQP3aozIrTRSVpM8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HeartBeatsLambdaFunction"
               },
-              "CodeSha256": "S3pidE0Rrdj2gJ1+4QsCfGw8PG30kfkdkE3lDiI2oyo=",
+              "CodeSha256": "frTanaNBRN9pql+vkUpYXAa+ycvF5RbtJgRFLWNP3X0=",
               "Description": "lambda to ensure that everything is ok!"
             }
           },
@@ -855,6 +898,78 @@
               }
             },
             "DependsOn": "HttpApiIntegrationReadAuthMobile"
+          },
+          "GetAuthByIdLambdaPermissionHttpApi": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "GetAuthByIdLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "HttpApi"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "HttpApiIntegrationGetAuthById": {
+            "Type": "AWS::ApiGatewayV2::Integration",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "IntegrationType": "AWS_PROXY",
+              "IntegrationUri": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"GetAuthByIdLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+              },
+              "PayloadFormatVersion": "2.0",
+              "TimeoutInMillis": 30000
+            }
+          },
+          "HttpApiRouteGetApiV0AuthGetauthbyid": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "GET /api/v0/auth/getAuthById",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationGetAuthById"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationGetAuthById"
           },
           "GetIdByUserAndPasswordLambdaPermissionHttpApi": {
             "Type": "AWS::Lambda::Permission",
@@ -1229,7 +1344,7 @@
           "CraeteAuthLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CraeteAuthLambdaVersioniqM21i8Up4CpDjF7jC5K9RMXaoy9WEgM39dc7O0CT0"
+              "Ref": "CraeteAuthLambdaVersion7AFS6X9FezCLrQwpqNX923bIlWIfe0W6GOkMGVTVo"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-CraeteAuthLambdaFunctionQualifiedArn"
@@ -1238,7 +1353,7 @@
           "CreateAuthMobileLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateAuthMobileLambdaVersionulIweprwaIwIC5kUFTTzgG4Dgr8jOpZIPeA2rquIsI"
+              "Ref": "CreateAuthMobileLambdaVersion9KO8h5rT1YrksJAG17h5pIZdBFfsIlvvBleyVNAw"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-CreateAuthMobileLambdaFunctionQualifiedArn"
@@ -1247,7 +1362,7 @@
           "ReadAuthLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ReadAuthLambdaVersionjTS4VILbwrYxS9ZHRyL4PuqBMcpQPTxjjJSpwJB0"
+              "Ref": "ReadAuthLambdaVersionfQhf0dEP1SVLwgaa552FrFdiP7ItReUmpTcDh4o3EA"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-ReadAuthLambdaFunctionQualifiedArn"
@@ -1256,16 +1371,25 @@
           "ReadAuthMobileLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ReadAuthMobileLambdaVersionyX1wmqMBaYTMucwlTLuxDDxkG10va9lqRWxw5kvgM"
+              "Ref": "ReadAuthMobileLambdaVersionONaDAZd0RKHw1DBSsBNjdwqI5MUthjvwpwEdzwrY"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-ReadAuthMobileLambdaFunctionQualifiedArn"
             }
           },
+          "GetAuthByIdLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "GetAuthByIdLambdaVersionvz0w2HS8ByXphQxxQqUd9SDMSHd1yk60LhnKPlUaw"
+            },
+            "Export": {
+              "Name": "sls-IoT-SES-AuthRestApi-dev-GetAuthByIdLambdaFunctionQualifiedArn"
+            }
+          },
           "GetIdByUserAndPasswordLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetIdByUserAndPasswordLambdaVersionK3OVNdVPzeZNXm2YuCf6PnPkFh2kCt6dNq6Dt8U4w"
+              "Ref": "GetIdByUserAndPasswordLambdaVersionSlS1q2LFPphVhCW45ILSWWwnQXRcPxc0y91K7NuLU"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-GetIdByUserAndPasswordLambdaFunctionQualifiedArn"
@@ -1274,7 +1398,7 @@
           "GetIdByEmailLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetIdByEmailLambdaVersionagpy3L8voEqpITyTAD4ATfEo2FbxFZDi0cHAbUu1L60"
+              "Ref": "GetIdByEmailLambdaVersionagD4dORgnw5L6TS7mFFPPcztrNJRpzwI6Rxro12hKY"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-GetIdByEmailLambdaFunctionQualifiedArn"
@@ -1283,7 +1407,7 @@
           "UpdateAuthLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateAuthLambdaVersionFpNBreDOAvl7uzE1DI7cR9fpa1OoZFsq506y0bwkXvI"
+              "Ref": "UpdateAuthLambdaVersionkJwlzoBVQRHwbpvx6HVtG51D6EWC8dtqa47CU7CsJk"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-UpdateAuthLambdaFunctionQualifiedArn"
@@ -1292,7 +1416,7 @@
           "DeleteAuthLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteAuthLambdaVersionML8DhJg0xwbYZ3u9SeK1Bw3UI2rqDHr3mFBwu3uuU"
+              "Ref": "DeleteAuthLambdaVersionGiQq94L9ZqYWIEXDNg4aRMrWq2KV0XZwZkE950BZ5c"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-DeleteAuthLambdaFunctionQualifiedArn"
@@ -1301,7 +1425,7 @@
           "HeartBeatsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HeartBeatsLambdaVersionCXhrpv7lmnpGsgkMkCNGeVQWOmi7qw98fe4DchRt2Y"
+              "Ref": "HeartBeatsLambdaVersionSXVHLwdE1bze3NK3JUDFRfMsnoQP3aozIrTRSVpM8"
             },
             "Export": {
               "Name": "sls-IoT-SES-AuthRestApi-dev-HeartBeatsLambdaFunctionQualifiedArn"
@@ -1448,7 +1572,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CraeteAuthLambdaVersioniqM21i8Up4CpDjF7jC5K9RMXaoy9WEgM39dc7O0CT0"
+        "versionLogicalId": "CraeteAuthLambdaVersion7AFS6X9FezCLrQwpqNX923bIlWIfe0W6GOkMGVTVo"
       },
       "createAuthMobile": {
         "handler": "createAuthMobile.handler",
@@ -1469,7 +1593,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "CreateAuthMobileLambdaVersionulIweprwaIwIC5kUFTTzgG4Dgr8jOpZIPeA2rquIsI"
+        "versionLogicalId": "CreateAuthMobileLambdaVersion9KO8h5rT1YrksJAG17h5pIZdBFfsIlvvBleyVNAw"
       },
       "readAuth": {
         "handler": "readAuth.handler",
@@ -1490,7 +1614,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ReadAuthLambdaVersionjTS4VILbwrYxS9ZHRyL4PuqBMcpQPTxjjJSpwJB0"
+        "versionLogicalId": "ReadAuthLambdaVersionfQhf0dEP1SVLwgaa552FrFdiP7ItReUmpTcDh4o3EA"
       },
       "readAuthMobile": {
         "handler": "readAuthMobile.handler",
@@ -1511,7 +1635,28 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ReadAuthMobileLambdaVersionyX1wmqMBaYTMucwlTLuxDDxkG10va9lqRWxw5kvgM"
+        "versionLogicalId": "ReadAuthMobileLambdaVersionONaDAZd0RKHw1DBSsBNjdwqI5MUthjvwpwEdzwrY"
+      },
+      "getAuthById": {
+        "handler": "getAuthById.handler",
+        "description": "lambda function to get authentication by ID for QRCODE module!",
+        "events": [
+          {
+            "httpApi": {
+              "path": "/api/v0/auth/getAuthById",
+              "method": "GET"
+            },
+            "resolvedMethod": "GET",
+            "resolvedPath": "/api/v0/auth/getAuthById"
+          }
+        ],
+        "name": "IoT-SES-AuthRestApi-dev-getAuthById",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "GetAuthByIdLambdaVersionvz0w2HS8ByXphQxxQqUd9SDMSHd1yk60LhnKPlUaw"
       },
       "getIdByUserAndPassword": {
         "handler": "getIdByUserAndPss.handler",
@@ -1532,7 +1677,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetIdByUserAndPasswordLambdaVersionK3OVNdVPzeZNXm2YuCf6PnPkFh2kCt6dNq6Dt8U4w"
+        "versionLogicalId": "GetIdByUserAndPasswordLambdaVersionSlS1q2LFPphVhCW45ILSWWwnQXRcPxc0y91K7NuLU"
       },
       "getIdByEmail": {
         "handler": "getIdByEmail.handler",
@@ -1553,7 +1698,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "GetIdByEmailLambdaVersionagpy3L8voEqpITyTAD4ATfEo2FbxFZDi0cHAbUu1L60"
+        "versionLogicalId": "GetIdByEmailLambdaVersionagD4dORgnw5L6TS7mFFPPcztrNJRpzwI6Rxro12hKY"
       },
       "updateAuth": {
         "handler": "updateAuth.handler",
@@ -1574,7 +1719,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "UpdateAuthLambdaVersionFpNBreDOAvl7uzE1DI7cR9fpa1OoZFsq506y0bwkXvI"
+        "versionLogicalId": "UpdateAuthLambdaVersionkJwlzoBVQRHwbpvx6HVtG51D6EWC8dtqa47CU7CsJk"
       },
       "deleteAuth": {
         "handler": "readAuth.handler",
@@ -1595,7 +1740,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "DeleteAuthLambdaVersionML8DhJg0xwbYZ3u9SeK1Bw3UI2rqDHr3mFBwu3uuU"
+        "versionLogicalId": "DeleteAuthLambdaVersionGiQq94L9ZqYWIEXDNg4aRMrWq2KV0XZwZkE950BZ5c"
       },
       "heartBeats": {
         "handler": "index.handler",
@@ -1616,7 +1761,7 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "HeartBeatsLambdaVersionCXhrpv7lmnpGsgkMkCNGeVQWOmi7qw98fe4DchRt2Y"
+        "versionLogicalId": "HeartBeatsLambdaVersionSXVHLwdE1bze3NK3JUDFRfMsnoQP3aozIrTRSVpM8"
       }
     },
     "configValidationMode": "warn",
@@ -1635,7 +1780,7 @@
     "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\auth\\.serverless\\IoT-SES-AuthRestApi.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/IoT-SES-AuthRestApi/dev/1688506339771-2023-07-04T21:32:19.771Z",
+    "artifactDirectoryName": "serverless/IoT-SES-AuthRestApi/dev/1688570692385-2023-07-05T15:24:52.385Z",
     "artifact": "IoT-SES-AuthRestApi.zip"
   }
 }

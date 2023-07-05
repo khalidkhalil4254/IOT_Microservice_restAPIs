@@ -11,3 +11,9 @@ functions:
           path: /api/v0/emails/send
           method: POST
 
+  createSms:
+    handler: createSms.handler
+    events:
+      - httpApi:
+          path: /api/v0/sms/send
+          method: POST

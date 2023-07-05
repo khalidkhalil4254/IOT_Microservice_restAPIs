@@ -89,6 +89,12 @@
               "LogGroupName": "/aws/lambda/IoT-SES-EmailsRestApi-dev-mailer"
             }
           },
+          "CreateSmsLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/IoT-SES-EmailsRestApi-dev-createSms"
+            }
+          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -174,7 +180,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-EmailsRestApi/dev/1688506467879-2023-07-04T21:34:27.879Z/IoT-SES-EmailsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-EmailsRestApi/dev/1688570809806-2023-07-05T15:26:49.806Z/IoT-SES-EmailsRestApi.zip"
               },
               "Handler": "createEmail.handler",
               "Runtime": "nodejs14.x",
@@ -192,14 +198,49 @@
               "MailerLogGroup"
             ]
           },
-          "MailerLambdaVersionhh3ogavs0riyH6rqyUAtVdgYDqnO5eXZlTATiTaaX8": {
+          "CreateSmsLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/IoT-SES-EmailsRestApi/dev/1688570809806-2023-07-05T15:26:49.806Z/IoT-SES-EmailsRestApi.zip"
+              },
+              "Handler": "createSms.handler",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "IoT-SES-EmailsRestApi-dev-createSms",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "CreateSmsLogGroup"
+            ]
+          },
+          "MailerLambdaVersion64DKH9YJqeUIejElXt0bl0LPVD1qg7yPH9s6RdlQrU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "MailerLambdaFunction"
               },
-              "CodeSha256": "MlWZXV+4ez7DwGg6j+SdlxxolJNIKiAfBVFibtGKxTY="
+              "CodeSha256": "3QBIngcRGSw0Q+iiUVdzDX1pCS7OH6Nh9vZ9YSh/uLM="
+            }
+          },
+          "CreateSmsLambdaVersionnfd2UHxnCuPFWqrGBJ6ToZTWLyC4t3GsCHM9kAUNFE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "CreateSmsLambdaFunction"
+              },
+              "CodeSha256": "3QBIngcRGSw0Q+iiUVdzDX1pCS7OH6Nh9vZ9YSh/uLM="
             }
           },
           "ApiGatewayRestApi": {
@@ -311,7 +352,7 @@
               "MailerLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1688506462073": {
+          "ApiGatewayDeployment1688570800835": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -359,6 +400,98 @@
                 ]
               }
             }
+          },
+          "HttpApi": {
+            "Type": "AWS::ApiGatewayV2::Api",
+            "Properties": {
+              "Name": "dev-IoT-SES-EmailsRestApi",
+              "ProtocolType": "HTTP"
+            }
+          },
+          "HttpApiStage": {
+            "Type": "AWS::ApiGatewayV2::Stage",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "StageName": "$default",
+              "AutoDeploy": true,
+              "DefaultRouteSettings": {
+                "DetailedMetricsEnabled": false
+              }
+            }
+          },
+          "CreateSmsLambdaPermissionHttpApi": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "CreateSmsLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "HttpApi"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "HttpApiIntegrationCreateSms": {
+            "Type": "AWS::ApiGatewayV2::Integration",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "IntegrationType": "AWS_PROXY",
+              "IntegrationUri": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"CreateSmsLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+              },
+              "PayloadFormatVersion": "2.0",
+              "TimeoutInMillis": 30000
+            }
+          },
+          "HttpApiRoutePostApiV0SmsSend": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "POST /api/v0/sms/send",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationCreateSms"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationCreateSms"
           }
         },
         "Outputs": {
@@ -373,10 +506,19 @@
           "MailerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "MailerLambdaVersionhh3ogavs0riyH6rqyUAtVdgYDqnO5eXZlTATiTaaX8"
+              "Ref": "MailerLambdaVersion64DKH9YJqeUIejElXt0bl0LPVD1qg7yPH9s6RdlQrU"
             },
             "Export": {
               "Name": "sls-IoT-SES-EmailsRestApi-dev-MailerLambdaFunctionQualifiedArn"
+            }
+          },
+          "CreateSmsLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "CreateSmsLambdaVersionnfd2UHxnCuPFWqrGBJ6ToZTWLyC4t3GsCHM9kAUNFE"
+            },
+            "Export": {
+              "Name": "sls-IoT-SES-EmailsRestApi-dev-CreateSmsLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -403,6 +545,40 @@
             },
             "Export": {
               "Name": "sls-IoT-SES-EmailsRestApi-dev-ServiceEndpoint"
+            }
+          },
+          "HttpApiId": {
+            "Description": "Id of the HTTP API",
+            "Value": {
+              "Ref": "HttpApi"
+            },
+            "Export": {
+              "Name": "sls-IoT-SES-EmailsRestApi-dev-HttpApiId"
+            }
+          },
+          "HttpApiUrl": {
+            "Description": "URL of the HTTP API",
+            "Value": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "HttpApi"
+                  },
+                  ".execute-api.",
+                  {
+                    "Ref": "AWS::Region"
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  }
+                ]
+              ]
+            },
+            "Export": {
+              "Name": "sls-IoT-SES-EmailsRestApi-dev-HttpApiUrl"
             }
           }
         }
@@ -510,7 +686,27 @@
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "MailerLambdaVersionhh3ogavs0riyH6rqyUAtVdgYDqnO5eXZlTATiTaaX8"
+        "versionLogicalId": "MailerLambdaVersion64DKH9YJqeUIejElXt0bl0LPVD1qg7yPH9s6RdlQrU"
+      },
+      "createSms": {
+        "handler": "createSms.handler",
+        "events": [
+          {
+            "httpApi": {
+              "path": "/api/v0/sms/send",
+              "method": "POST"
+            },
+            "resolvedMethod": "POST",
+            "resolvedPath": "/api/v0/sms/send"
+          }
+        ],
+        "name": "IoT-SES-EmailsRestApi-dev-createSms",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "CreateSmsLambdaVersionnfd2UHxnCuPFWqrGBJ6ToZTWLyC4t3GsCHM9kAUNFE"
       }
     },
     "configValidationMode": "warn",
@@ -529,7 +725,7 @@
     "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\email\\.serverless\\IoT-SES-EmailsRestApi.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/IoT-SES-EmailsRestApi/dev/1688506467879-2023-07-04T21:34:27.879Z",
+    "artifactDirectoryName": "serverless/IoT-SES-EmailsRestApi/dev/1688570809806-2023-07-05T15:26:49.806Z",
     "artifact": "IoT-SES-EmailsRestApi.zip"
   }
 }

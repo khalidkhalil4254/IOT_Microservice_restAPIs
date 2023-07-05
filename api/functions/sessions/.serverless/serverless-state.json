@@ -216,7 +216,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "createSession.handler",
               "Runtime": "nodejs14.x",
@@ -242,7 +242,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "registerByEmail.handler",
               "Runtime": "nodejs14.x",
@@ -268,7 +268,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "checkSeats.handler",
               "Runtime": "nodejs14.x",
@@ -294,7 +294,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "readSession.handler",
               "Runtime": "nodejs14.x",
@@ -320,7 +320,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "getCountByCompany.handler",
               "Runtime": "nodejs14.x",
@@ -346,7 +346,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "updateSession.handler",
               "Runtime": "nodejs14.x",
@@ -372,7 +372,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "deleteSession.handler",
               "Runtime": "nodejs14.x",
@@ -398,7 +398,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z/IoT-SES-SessionsRestApi.zip"
+                "S3Key": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z/IoT-SES-SessionsRestApi.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs14.x",
@@ -1490,7 +1490,7 @@
     "artifact": "D:\\4th_year_materials\\myTeamWorks\\khalid\\IOT_expressjs_restAPI-main\\api\\functions\\sessions\\.serverless\\IoT-SES-SessionsRestApi.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/IoT-SES-SessionsRestApi/dev/1688506383872-2023-07-04T21:33:03.872Z",
+    "artifactDirectoryName": "serverless/IoT-SES-SessionsRestApi/dev/1688570789100-2023-07-05T15:26:29.100Z",
     "artifact": "IoT-SES-SessionsRestApi.zip"
   }
 }
