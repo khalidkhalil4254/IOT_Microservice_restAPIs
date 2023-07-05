@@ -18,6 +18,26 @@ functions:
         path: /api/v0/sessions/create
         method: POST
 
+
+  #registerByEmail:
+  registerByEmail:
+    handler: registerByEmail.handler
+    description: lambda function to create a new registeration using mobile App.
+    events:
+    - httpApi:
+        path: /api/v1/sessions/registerationCreate
+        method: POST
+
+  #checkSeats:
+  checkSeats:
+    handler: checkSeats.handler
+    description: lambda function to read number of registered users for mobile app.
+    events:
+    - httpApi:
+        path: /api/v1/sessions/checkSeats
+        method: GET
+  
+
   #function to read all sessions from database:
   readSession:
     handler: readSession.handler
@@ -26,6 +46,16 @@ functions:
     - httpApi:
         path: /api/v0/sessions/read
         method: GET
+  #getCountByCompany:
+  getCountByCompany:
+    handler: getCountByCompany.handler
+    description: lambda to function to get number of consumed seats of each company for mobile application!
+    events:
+      - httpApi:
+          path: /api/v1/sessions/getCountByCompany
+          method: GET
+
+
 
   #function to update specific session or an existing one:
   updateSession:
