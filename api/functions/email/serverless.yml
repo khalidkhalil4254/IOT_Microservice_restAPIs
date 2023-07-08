@@ -6,14 +6,8 @@ provider:
 functions:
   mailer:
     handler: createEmail.handler
+    description: Lambda function to auto send emails and email templates.
     events:
       - http:
           path: /api/v0/emails/send
-          method: POST
-
-  createSms:
-    handler: createSms.handler
-    events:
-      - httpApi:
-          path: /api/v0/sms/send
           method: POST
